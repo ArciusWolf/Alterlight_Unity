@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: Ambulance
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: -775395776, guid: d999b8ba1d04ae840bfe9f6782119be3, type: 3}
+  - {fileID: -546550894, guid: d999b8ba1d04ae840bfe9f6782119be3, type: 3}
+  - {fileID: -2018234669, guid: d999b8ba1d04ae840bfe9f6782119be3, type: 3}
+  - {fileID: -947356766, guid: d999b8ba1d04ae840bfe9f6782119be3, type: 3}
+  - {fileID: -1259755645, guid: d999b8ba1d04ae840bfe9f6782119be3, type: 3}
+  - {fileID: 600314262, guid: d999b8ba1d04ae840bfe9f6782119be3, type: 3}
+  - {fileID: -1255609153, guid: d999b8ba1d04ae840bfe9f6782119be3, type: 3}
+  - {fileID: -1851479627, guid: d999b8ba1d04ae840bfe9f6782119be3, type: 3}
+  - {fileID: -1404995802, guid: d999b8ba1d04ae840bfe9f6782119be3, type: 3}
+  - {fileID: 771579790, guid: d999b8ba1d04ae840bfe9f6782119be3, type: 3}
+  - {fileID: 327516052, guid: d999b8ba1d04ae840bfe9f6782119be3, type: 3}
+  - {fileID: -1573595913, guid: d999b8ba1d04ae840bfe9f6782119be3, type: 3}
+  - {fileID: 557709380, guid: d999b8ba1d04ae840bfe9f6782119be3, type: 3}
+  - {fileID: -87519191, guid: d999b8ba1d04ae840bfe9f6782119be3, type: 3}
+  m_MinSpeed: 5
+  m_MaxSpeed: 5
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 1
+  m_TileAnimationFlags: 0
