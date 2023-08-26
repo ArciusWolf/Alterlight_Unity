@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wolfy_Attack
+  m_Name: idle
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,19 +21,19 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 280784273, guid: a9a7d948e36d51843a49c688f2b92a15, type: 3}
-    - time: 0.1
-      value: {fileID: 1114940851, guid: a9a7d948e36d51843a49c688f2b92a15, type: 3}
-    - time: 0.2
-      value: {fileID: 1586620144, guid: a9a7d948e36d51843a49c688f2b92a15, type: 3}
-    - time: 0.3
-      value: {fileID: 30426083, guid: a9a7d948e36d51843a49c688f2b92a15, type: 3}
+      value: {fileID: 1340176325, guid: bbbe5ef60cdb21047b9e6e96d20e0657, type: 3}
+    - time: 0.125
+      value: {fileID: 1993563991, guid: bbbe5ef60cdb21047b9e6e96d20e0657, type: 3}
+    - time: 0.25
+      value: {fileID: -966346325, guid: bbbe5ef60cdb21047b9e6e96d20e0657, type: 3}
+    - time: 0.375
+      value: {fileID: -484960743, guid: bbbe5ef60cdb21047b9e6e96d20e0657, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
     flags: 2
-  m_SampleRate: 10
+  m_SampleRate: 8
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -50,16 +50,16 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 280784273, guid: a9a7d948e36d51843a49c688f2b92a15, type: 3}
-    - {fileID: 1114940851, guid: a9a7d948e36d51843a49c688f2b92a15, type: 3}
-    - {fileID: 1586620144, guid: a9a7d948e36d51843a49c688f2b92a15, type: 3}
-    - {fileID: 30426083, guid: a9a7d948e36d51843a49c688f2b92a15, type: 3}
+    - {fileID: 1340176325, guid: bbbe5ef60cdb21047b9e6e96d20e0657, type: 3}
+    - {fileID: 1993563991, guid: bbbe5ef60cdb21047b9e6e96d20e0657, type: 3}
+    - {fileID: -966346325, guid: bbbe5ef60cdb21047b9e6e96d20e0657, type: 3}
+    - {fileID: -484960743, guid: bbbe5ef60cdb21047b9e6e96d20e0657, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.4
+    m_StopTime: 0.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -78,18 +78,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0
-    functionName: SwordAttack
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.3
-    functionName: EndAttack
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []
