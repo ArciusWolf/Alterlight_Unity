@@ -12,7 +12,7 @@ public class SwordAttack : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        RightAttackOffset = transform.position;
+        RightAttackOffset = transform.localPosition;
     }
 
     public void AttackRight()
