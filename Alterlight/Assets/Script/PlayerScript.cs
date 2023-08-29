@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 1f;
-
+    public float health = 100f;
     public float collisionOffset = 0.1f;
 
     public ContactFilter2D movementFilter;
