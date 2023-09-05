@@ -6,12 +6,17 @@ public class SwordAttack : MonoBehaviour
 {
     public Collider2D swordCollider;
     Vector2 RightAttackOffset;
+    public float knockbackForce = 500f;
 
     public float damage = 10f;
 
     // Start is called before the first frame update
-    private void Start()
+    void Start()
     {
+        if (swordCollider == null)
+        {
+            Debug.LogError("Sword Collider is null");
+        }
         RightAttackOffset = transform.localPosition;
     }
 
@@ -37,10 +42,10 @@ public class SwordAttack : MonoBehaviour
         if (obj.gameObject.CompareTag("Enemy"))
         {
            Enemy enemy = obj.GetComponent<Enemy>();
-
             if (enemy != null)
             {
                 enemy.Health -= damage;
+/*                obj.SendMessage("OnHit", damage);*/
             }
         }
     }

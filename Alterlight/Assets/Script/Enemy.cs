@@ -5,11 +5,17 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     Animator anim;
+    Rigidbody2D rigid;
     public float Health
+
     {
         set
         {
-             health = value;
+            if (value < health)
+            {
+                anim.SetTrigger("isHit");
+                health = value;
+            }
             if (health <= 0)
             {
                 Dead();
@@ -23,8 +29,11 @@ public class Enemy : MonoBehaviour
     public void Start()
     {
         anim = GetComponent<Animator>();
+        rigid = GetComponent<Rigidbody2D>();
     }
     public float health = 20f;
+
+
 
     public void Dead()
     {
@@ -33,8 +42,11 @@ public class Enemy : MonoBehaviour
 
     public void RemoveEnemy()
     {
-        Destroy(gameObject);
+        Destroy(gameObject, 3);
     }
 
-
+/*    public void OnHit(float damage)
+    {
+          Health -= health;
+    }*/
 }
