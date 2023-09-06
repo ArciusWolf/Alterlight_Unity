@@ -7,15 +7,14 @@ public class Enemy : MonoBehaviour
     Animator anim;
     Rigidbody2D rigid;
     public float Health
-
     {
         set
         {
             if (value < health)
             {
                 anim.SetTrigger("isHit");
-                health = value;
             }
+            health = value;
             if (health <= 0)
             {
                 Dead();
