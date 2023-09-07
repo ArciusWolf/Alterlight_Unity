@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
+using TMPro;
 using UnityEngine;
 
 public class DamageableObject : MonoBehaviour, Damageable
 {
+    public GameObject DamageText;
     Animator anim;
     Rigidbody2D rigid;
     Collider2D physicsCollider;
@@ -15,6 +17,11 @@ public class DamageableObject : MonoBehaviour, Damageable
             if (value < health)
             {
                 anim.SetTrigger("isHit");
+                RectTransform textDmg = Instantiate(DamageText).GetComponent<RectTransform>();
+                textDmg.transform.position = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+
+                Canvas canvas = GameObject.FindGameObjectWithTag("Hub").GetComponent<Canvas>();
+                textDmg.SetParent(canvas.transform);
             }
             health = value;
             if (health <= 0)
@@ -48,7 +55,7 @@ public class DamageableObject : MonoBehaviour, Damageable
         }
     }
 
-    public bool _targetable = true;
+    bool _targetable = true;
 
     public void Dead()
     {
@@ -68,19 +75,19 @@ public class DamageableObject : MonoBehaviour, Damageable
     public void OnHit(float damage, Vector2 knockback)
     {
         Health -= damage;
-        rigid.AddForce(knockback, ForceMode2D.Impulse);
+        rigid.AddForce(knockback);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            Damageable damageable = collision.collider.GetComponent<Damageable>();
+    //void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.tag == "Player")
+    //    {
+    //        Damageable damageable = collision.collider.GetComponent<Damageable>();
 
-            if (damageable != null)
-            {
-                damageable.OnHit(10f);
-            }
-        }
-    }
+    //        if (damageable != null)
+    //        {
+    //            damageable.OnHit(10f);
+    //        }
+    //    }
+    //}
 }

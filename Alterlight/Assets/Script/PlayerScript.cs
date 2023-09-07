@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour, Damageable
     public float health = 100f;
     public float collisionOffset = 0.1f;
     public ContactFilter2D movementFilter;
+    public GameObject DamageText;
     Vector2 movementInput;
     Rigidbody2D rb;
     Animator anim;
@@ -38,6 +39,12 @@ public class PlayerMovement : MonoBehaviour, Damageable
             if (value < health)
             {
                 anim.SetTrigger("isHit");
+                RectTransform textDmg = Instantiate(DamageText).GetComponent<RectTransform>();
+                textDmg.transform.position = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+
+                Canvas canvas = GameObject.FindGameObjectWithTag("Hub").GetComponent<Canvas>();
+                textDmg.SetParent(canvas.transform);
+
             }
             health = value;
     // If health is 0, play dead animation and remove player
@@ -162,6 +169,6 @@ public class PlayerMovement : MonoBehaviour, Damageable
     public void OnHit(float damage, Vector2 knockback)
     {
         Health -= damage;
-        rb.AddForce(knockback, ForceMode2D.Impulse);
+        rb.AddForce(knockback);
     }
 }
