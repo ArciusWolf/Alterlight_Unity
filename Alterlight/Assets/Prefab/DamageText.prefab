@@ -58,9 +58,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c1c95c564374b041a0027af32438ab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLast: 0.3
+  timeLast: 0.5
   timeElapsed: 0
-  floatSpeed: 250
+  floatSpeed: 350
   textMeshPro: {fileID: 1776435969991122324}
 --- !u!114 &1776435969991122324
 MonoBehaviour:
@@ -82,9 +82,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 15
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9a96ee59475954046b64fcc58a533287, type: 2}
   m_sharedMaterial: {fileID: -7579634176527558636, guid: 9a96ee59475954046b64fcc58a533287, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

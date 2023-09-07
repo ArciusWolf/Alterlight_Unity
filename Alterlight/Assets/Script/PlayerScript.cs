@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour, Damageable
 {
@@ -12,6 +13,7 @@ public class PlayerMovement : MonoBehaviour, Damageable
     public float collisionOffset = 0.1f;
     public ContactFilter2D movementFilter;
     public GameObject DamageText;
+    public TextMeshProUGUI healthText;
     Vector2 movementInput;
     Rigidbody2D rb;
     Animator anim;
@@ -30,6 +32,7 @@ public class PlayerMovement : MonoBehaviour, Damageable
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         physicsCollider = GetComponent<Collider2D>();
+
     }
     // Play hit animation when hit and reduce health
     public float Health
@@ -165,10 +168,12 @@ public class PlayerMovement : MonoBehaviour, Damageable
     public void OnHit(float damage)
     {
         Health -= damage;
+        healthText.text = damage.ToString();
     }
     public void OnHit(float damage, Vector2 knockback)
     {
         Health -= damage;
+        healthText.text = damage.ToString();
         rb.AddForce(knockback);
     }
 }
