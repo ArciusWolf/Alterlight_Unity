@@ -164,14 +164,4 @@ public class PlayerMovement : MonoBehaviour, Damageable
         Health -= damage;
         rb.AddForce(knockback, ForceMode2D.Impulse);
     }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        Damageable damageable = collision.collider.GetComponent<Damageable>();
-
-        if (damageable != null)
-        {
-            damageable.OnHit(10f);
-        }
-    }
 }

@@ -73,11 +73,14 @@ public class DamageableObject : MonoBehaviour, Damageable
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Damageable damageable = collision.collider.GetComponent<Damageable>();
-
-        if (damageable != null)
+        if (collision.gameObject.tag == "Player")
         {
-            damageable.OnHit(10f);
+            Damageable damageable = collision.collider.GetComponent<Damageable>();
+
+            if (damageable != null)
+            {
+                damageable.OnHit(10f);
+            }
         }
     }
 }
