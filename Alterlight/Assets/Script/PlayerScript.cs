@@ -5,35 +5,77 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, Damageable
 {
     public float speed = 1f;
     public float health = 100f;
     public float collisionOffset = 0.1f;
-
     public ContactFilter2D movementFilter;
-
     Vector2 movementInput;
-
     Rigidbody2D rb;
-
     Animator anim;
-
     SpriteRenderer spriteRenderer;
-
+    Collider2D physicsCollider;
     public SwordAttack swordAttack;
-
-
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
     bool canMove = true;
+    bool isAlive = true;
+    public bool _targetable = true;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        physicsCollider = GetComponent<Collider2D>();
+    }
+    // Play hit animation when hit and reduce health
+    public float Health
+    {
+        set
+        {
+            if (value < health)
+            {
+                anim.SetTrigger("isHit");
+            }
+            health = value;
+    // If health is 0, play dead animation and remove player
+            if (health <= 0)
+            {
+                Dead();
+                Targetable = false;
+            }
+        }
+        get
+        {
+            return health;
+        }
     }
 
+    public void Dead()
+    {
+        anim.SetBool("isDead", true);
+        isAlive = false;
+    }
+    // Toggle player targetable
+    public bool Targetable
+    {
+        get { return _targetable; }
+        set
+        {
+            _targetable = value;
+
+            rb.simulated = value;
+            physicsCollider.enabled = value;
+        }
+    }
+    // Remove player function
+    public void RemovePlayer()
+    {
+        Destroy(gameObject);
+    }
+    // Update is called once per frame
     void FixedUpdate()
     {
         if (canMove)
@@ -41,7 +83,6 @@ public class PlayerMovement : MonoBehaviour
             if (movementInput != Vector2.zero)
             {
                 bool success = TryMove(movementInput);
-
                 if (!success)
                 {
                     success = TryMove(new Vector2(movementInput.x, 0f));
@@ -53,12 +94,10 @@ public class PlayerMovement : MonoBehaviour
                 // Player Animation when moving
                 anim.SetBool("isMove", true);
             }
-
             else
             {
                 anim.SetBool("isMove", false);
             }
-
             // Flip Character when x < 0 or x > 0
             if (movementInput.x < 0)
             {
@@ -70,54 +109,69 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-
     private bool TryMove(Vector2 direction)
     {
-            int Count = rb.Cast(direction, movementFilter, castCollisions, speed * Time.fixedDeltaTime + collisionOffset);
-
-            if (Count == 0)
-            {
-                rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        void OnMove(InputValue movementValue)
+        int Count = rb.Cast(direction, movementFilter, castCollisions, speed * Time.fixedDeltaTime + collisionOffset);
+        if (Count == 0)
         {
-            movementInput = movementValue.Get<Vector2>();
+            rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
+            return true;
         }
-
-        void OnFire()
+        else
+        {
+            return false;
+        }
+    }
+    void OnMove(InputValue movementValue)
+    {
+        movementInput = movementValue.Get<Vector2>();
+    }
+    void OnFire()
     {
         anim.SetTrigger("isAttack");
     }
-
     public void SwordAttack()
     {
         LockMovement();
         if (spriteRenderer.flipX == true)
         {
-        swordAttack.AttackLeft();
-        } else {
+            swordAttack.AttackLeft();
+        }
+        else
+        {
             swordAttack.AttackRight();
         }
     }
-
     public void EndAttack()
     {
         UnlockMovement();
         swordAttack.StopAttack();
     }
-        public void LockMovement()
+    public void LockMovement()
     {
-            canMove = false;
+        canMove = false;
+    }
+    public void UnlockMovement()
+    {
+        canMove = true;
+    }
+    public void OnHit(float damage)
+    {
+        Health -= damage;
+    }
+    public void OnHit(float damage, Vector2 knockback)
+    {
+        Health -= damage;
+        rb.AddForce(knockback, ForceMode2D.Impulse);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Damageable damageable = collision.collider.GetComponent<Damageable>();
+
+        if (damageable != null)
+        {
+            damageable.OnHit(10f);
         }
-        public void UnlockMovement()
-    {
-            canMove = true;
     }
-    }
+}

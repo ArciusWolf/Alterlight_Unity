@@ -7,10 +7,9 @@ public class SwordAttack : MonoBehaviour
     public Collider2D swordCollider;
     Vector2 RightAttackOffset;
     public float knockbackForce = 500f;
-
     public float damage = 10f;
+    Rigidbody2D rb;
 
-    // Start is called before the first frame update
     void Start()
     {
         if (swordCollider == null)
@@ -18,6 +17,7 @@ public class SwordAttack : MonoBehaviour
             Debug.LogError("Sword Collider is null");
         }
         RightAttackOffset = transform.localPosition;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     public void AttackRight()
@@ -39,13 +39,23 @@ public class SwordAttack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D obj)
     {
+        Damageable damageable = obj.GetComponent<Damageable>();
         if (obj.gameObject.CompareTag("Enemy"))
         {
-           Enemy enemy = obj.GetComponent<Enemy>();
-            if (enemy != null)
+            DamageableObject canHit = obj.GetComponent<DamageableObject>();
+            if (damageable != null)
             {
-                enemy.Health -= damage;
-/*                obj.SendMessage("OnHit", damage);*/
+                Vector3 parentPosition = gameObject.GetComponentInParent<Transform>().position;
+
+                Vector2 direction = (obj.transform.position - parentPosition).normalized;
+                Vector2 knockback = direction * knockbackForce;
+
+                /*            obj.SendMessage("OnHit", damage, knockback);*/
+                damageable.OnHit(damage, knockback);
+            }
+            else
+            {
+                Debug.Log("Damageable is null");
             }
         }
     }
