@@ -9,7 +9,9 @@ using TMPro;
 public class PlayerMovement : MonoBehaviour, Damageable
 {
     public float speed = 1f;
+    public HealthBar healthBar;
     public float health = 100f;
+    public float currentHP;
     public float collisionOffset = 0.1f;
     public ContactFilter2D movementFilter;
     public GameObject DamageText;
@@ -28,6 +30,7 @@ public class PlayerMovement : MonoBehaviour, Damageable
     // Start is called before the first frame update
     void Start()
     {
+        healthBar.setMaxHealth(health);
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -169,6 +172,7 @@ public class PlayerMovement : MonoBehaviour, Damageable
     {
         Health -= damage;
         healthText.text = damage.ToString();
+        healthBar.setHealth(health);
     }
     public void OnHit(float damage, Vector2 knockback)
     {

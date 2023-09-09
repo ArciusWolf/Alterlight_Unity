@@ -28,8 +28,8 @@ public class DMG_Text : MonoBehaviour
         rectTransform.anchoredPosition += new Vector2(0, floatSpeed * Time.deltaTime);
         //rectTransform.position += floatDirection * floatSpeed * Time.deltaTime;
 
-        //textMeshPro.color = new Color(startingColor.r, startingColor.g, startingColor.b, Mathf.Lerp(startingColor.a, 0, timeElapsed / timeLast));
-        textMeshPro.color = new Color(startingColor.r, startingColor.g, startingColor.b, 1 - (timeElapsed / timeLast));
+        textMeshPro.color = new Color(startingColor.r, startingColor.g, startingColor.b, Mathf.Lerp(startingColor.a, 0, timeElapsed / timeLast));
+        //textMeshPro.color = new Color(startingColor.r, startingColor.g, startingColor.b, 1 - (timeElapsed / timeLast));
 
         if (timeElapsed >= timeLast)
         {

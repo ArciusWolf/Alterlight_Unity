@@ -133,7 +133,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  healthBar: {fileID: 0}
   health: 100
+  currentHP: 0
   collisionOffset: 0.001
   movementFilter:
     useTriggers: 0
@@ -149,6 +151,8 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  DamageText: {fileID: 6527935151694319156, guid: f36c46357e8521340ac9241a75ca3e51, type: 3}
+  healthText: {fileID: 1776435969991122324, guid: f36c46357e8521340ac9241a75ca3e51, type: 3}
   swordAttack: {fileID: 2170480680884115857}
   _targetable: 1
 --- !u!50 &3777194248561396338
@@ -306,7 +310,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -320,7 +324,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.18, y: 0.2}
+  m_Size: {x: 0.3, y: 0.25}
   m_EdgeRadius: 0
 --- !u!114 &2170480680884115857
 MonoBehaviour:
@@ -334,6 +338,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0412f93af709c14c9162cd26dd72d4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swordCollider: {fileID: 0}
+  swordCollider: {fileID: 2794066865376852371}
   knockbackForce: 500
   damage: 10
