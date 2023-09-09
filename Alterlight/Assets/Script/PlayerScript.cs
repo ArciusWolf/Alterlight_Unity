@@ -24,7 +24,6 @@ public class PlayerMovement : MonoBehaviour, Damageable
     public SwordAttack swordAttack;
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
     bool canMove = true;
-    bool isAlive = true;
     public bool _targetable = true;
 
     // Start is called before the first frame update
@@ -69,7 +68,6 @@ public class PlayerMovement : MonoBehaviour, Damageable
     public void Dead()
     {
         anim.SetBool("isDead", true);
-        isAlive = false;
     }
     // Toggle player targetable
     public bool Targetable
