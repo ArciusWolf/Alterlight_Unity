@@ -9,16 +9,16 @@ public class Slime : MonoBehaviour
     public Detector detector;
     Animator anim;
 
-    DamageableObject DamageableObject;
+    Hostile hostile;
 
     void Start()
     {
         anim = GetComponent<Animator>();
-        DamageableObject = GetComponent<DamageableObject>();
+        hostile = GetComponent<Hostile>();
     }
     private void FixedUpdate()
     {
-        if(DamageableObject.Targetable && detector.detectedObjects.Count > 0)
+        if(hostile.Targetable && detector.detectedObjects.Count > 0)
         {
             transform.position = Vector2.MoveTowards(transform.position, detector.detectedObjects[0].transform.position, 0.1f * Time.deltaTime);
             anim.SetBool("isMoving", true);

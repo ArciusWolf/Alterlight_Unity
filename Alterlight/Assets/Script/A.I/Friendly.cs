@@ -37,21 +37,19 @@ public class DamageableObject : MonoBehaviour, Damageable
 
     void FixedUpdate()
     {
+        // If there is player in list, cancel the waypoint and move towards the player
+
         if (canMove && health > 0)
         {
             anim.SetBool("isMoving", true);
             // Move towards the waypoint
             transform.position = Vector2.MoveTowards(transform.position, wayPoint, speed * Time.deltaTime);
-            //if (Vector2.Distance(transform.position, wayPoint) < range)
-            //{
-            //    setNewDestination();
-            //}
         }
         else
         {
             anim.SetBool("isMoving", false);
         }
-
+        // Flip sprite when moving left or right
         if (transform.position.x > wayPoint.x)
         {
             spriteRenderer.flipX = true;
@@ -66,11 +64,7 @@ public class DamageableObject : MonoBehaviour, Damageable
             lockMovement();
             anim.SetBool("isIdle", true);
             Invoke("unlockMovement", 2f);
-            // then play random idle animation from blend tree
-
-
         }
-
     }
 
     void lockMovement()

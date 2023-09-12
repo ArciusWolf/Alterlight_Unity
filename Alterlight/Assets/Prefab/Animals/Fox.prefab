@@ -193,8 +193,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e1d4572ba7a794982a6c57b6b16b4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.1
-  range: 0
-  maxDistance: 0
+  speed: 0.2
+  range: 4
+  maxDistance: 4
   health: 20
-  DamageText: {fileID: 0}
+  DamageText: {fileID: 6527935151694319156, guid: f36c46357e8521340ac9241a75ca3e51, type: 3}
