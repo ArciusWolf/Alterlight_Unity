@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,24 +7,25 @@ public class WolfyMovement : MonoBehaviour
     public float speed = 1f;
     public float collisionOffset = 0.1f;
     public ContactFilter2D movementFilter;
+
+    Vector2 movementInput;
+    Rigidbody2D rb;
     Animator anim;
     SpriteRenderer spriteRenderer;
     Collider2D physicsCollider;
-    Vector2 movementInput;
-    Rigidbody2D rb;
-    bool canMove;
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
+    bool canMove = true;
 
+    // Start is called before the first frame update
     void Start()
     {
-        canMove = true;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         physicsCollider = GetComponent<Collider2D>();
     }
 
-    // Update is called once per frame
+    // FixedUpdate is called at a fixed rate
     void FixedUpdate()
     {
         if (canMove)
@@ -59,6 +59,7 @@ public class WolfyMovement : MonoBehaviour
             }
         }
     }
+
     private bool TryMove(Vector2 direction)
     {
         int Count = rb.Cast(direction, movementFilter, castCollisions, speed * Time.fixedDeltaTime + collisionOffset);
@@ -72,8 +73,19 @@ public class WolfyMovement : MonoBehaviour
             return false;
         }
     }
+
     void OnMove(InputValue movementValue)
     {
         movementInput = movementValue.Get<Vector2>();
+    }
+
+    public void LockMovement()
+    {
+        canMove = false;
+    }
+
+    public void UnlockMovement()
+    {
+        canMove = true;
     }
 }

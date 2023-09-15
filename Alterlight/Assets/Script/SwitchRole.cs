@@ -5,8 +5,8 @@ using Cinemachine;
 
 public class PlayerSwitch : MonoBehaviour
 {
-    public PlayerMovement WolfyController;
-    public PlayerMovement CyrusController;
+    public WolfyMovement WolfyController;
+    public CyrusMovement CyrusController;
     SwordAttack swordAttack;
     public CinemachineVirtualCamera cam;
     Animator anim;
