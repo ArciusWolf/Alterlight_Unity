@@ -112326,6 +112326,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 752237703917627061, guid: 805417276cab60f4dbd985263a2a6942, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 981520660305274402, guid: 805417276cab60f4dbd985263a2a6942, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -112479,6 +112483,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1358247047}
   - component: {fileID: 1358247046}
+  - component: {fileID: 1358247048}
   m_Layer: 0
   m_Name: Player Switcher
   m_TagString: Untagged
@@ -112498,8 +112503,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aff44f58322507f4b9f9900c23f0d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WolfyController: {fileID: 0}
-  CyrusController: {fileID: 0}
+  WolfyController: {fileID: 1743351148}
+  CyrusController: {fileID: 1726067713}
   cam: {fileID: 1743414741}
   WolfyActive: 1
 --- !u!4 &1358247047
@@ -112517,6 +112522,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1358247048
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358247045}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1c7a343b1c62a4b4c8a7a16738933af3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1469498064
 GameObject:
   m_ObjectHideFlags: 0
@@ -113714,7 +113740,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.6399539, y: -0.027149573}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -113725,7 +113751,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.25}
+  m_Size: {x: 1.5799078, y: 0.08710262}
   m_EdgeRadius: 0
 --- !u!4 &1579508912
 Transform:
@@ -114102,7 +114128,7 @@ Tilemap:
       - {fileID: -332127495, guid: 2c1463beeee5c8044af802e2eaec55e6, type: 3}
       - {fileID: 1640101385, guid: 2c1463beeee5c8044af802e2eaec55e6, type: 3}
       - {fileID: 1197155428, guid: 2c1463beeee5c8044af802e2eaec55e6, type: 3}
-      m_AnimationSpeed: 2.0417438
+      m_AnimationSpeed: 3.3254166
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
@@ -114466,6 +114492,12 @@ GameObject:
   - component: {fileID: 1726067708}
   - component: {fileID: 1726067707}
   - component: {fileID: 1726067706}
+  - component: {fileID: 1726067716}
+  - component: {fileID: 1726067715}
+  - component: {fileID: 1726067713}
+  - component: {fileID: 1726067714}
+  - component: {fileID: 1726067717}
+  - component: {fileID: 1726067718}
   m_Layer: 0
   m_Name: Cyrus
   m_TagString: Player
@@ -114664,6 +114696,108 @@ Transform:
   - {fileID: 1579508912}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1726067713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726067705}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98557ae66919f7244a3366910ae8d109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  collisionOffset: 0.1
+  movementFilter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+--- !u!114 &1726067714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726067705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83a00832c9464454bbce0f86fa7a2c96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1726067715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726067705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c454a4e65203c34a99b0533cd077906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 2131346134}
+  health: 100
+  currentHP: 0
+  DamageText: {fileID: 6527935151694319156, guid: f36c46357e8521340ac9241a75ca3e51, type: 3}
+  healthText: {fileID: 1776435969991122324, guid: f36c46357e8521340ac9241a75ca3e51, type: 3}
+--- !u!114 &1726067716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726067705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69bcc658ae0f10e4496f13beeb5cedcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordAttack: {fileID: 1579508910}
+--- !u!114 &1726067717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726067705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aff44f58322507f4b9f9900c23f0d754, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WolfyController: {fileID: 1743351148}
+  CyrusController: {fileID: 1726067713}
+  cam: {fileID: 1743414741}
+  WolfyActive: 0
+--- !u!114 &1726067718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726067705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9d2100edd77ed4c8ec61e5057663cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Wolfy: {fileID: 1743351141}
+  enemy: {fileID: 0}
+  attackRange: 3
+  moveSpeed: 1
 --- !u!1 &1727335120
 GameObject:
   m_ObjectHideFlags: 0
@@ -114864,6 +114998,7 @@ GameObject:
   - component: {fileID: 1743351151}
   - component: {fileID: 1743351150}
   - component: {fileID: 1743351149}
+  - component: {fileID: 1743351152}
   m_Layer: 0
   m_Name: Wolfy
   m_TagString: Player
@@ -115116,6 +115251,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swordAttack: {fileID: 1788702702}
+--- !u!114 &1743351152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743351141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aff44f58322507f4b9f9900c23f0d754, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WolfyController: {fileID: 1743351148}
+  CyrusController: {fileID: 1726067713}
+  cam: {fileID: 1743414741}
+  WolfyActive: 1
 --- !u!114 &1743414741 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2371666760334811892, guid: 513519d432b96e54c9c42c22d87527ff, type: 3}
@@ -115500,7 +115651,7 @@ Tilemap:
       - {fileID: -165571454, guid: d8c15b10099ad9840af6f32e20f09286, type: 3}
       - {fileID: -812556801, guid: d8c15b10099ad9840af6f32e20f09286, type: 3}
       - {fileID: 472989652, guid: d8c15b10099ad9840af6f32e20f09286, type: 3}
-      m_AnimationSpeed: 2.163412
+      m_AnimationSpeed: 1.3064972
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 83, y: 10, z: 0}
@@ -115523,7 +115674,7 @@ Tilemap:
       - {fileID: -165571454, guid: d8c15b10099ad9840af6f32e20f09286, type: 3}
       - {fileID: -812556801, guid: d8c15b10099ad9840af6f32e20f09286, type: 3}
       - {fileID: 472989652, guid: d8c15b10099ad9840af6f32e20f09286, type: 3}
-      m_AnimationSpeed: 1.1988539
+      m_AnimationSpeed: 1.0637032
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:

@@ -15,6 +15,7 @@ public class PlayerSwitch : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         swordAttack = GetComponent<SwordAttack>();
         cam.Follow = WolfyController.transform;
         cam.LookAt = WolfyController.transform;
@@ -50,16 +51,4 @@ public class PlayerSwitch : MonoBehaviour
             WolfyActive = true;
         }
     }
-    void FixedUpdate()
-    {
-        if (WolfyActive)
-        {
-            anim.SetBool("isMove", true);
-        } else if (WolfyActive == false)
-        {
-            anim.SetBool("isMove", true);
-        }
-    }
-
-
 }

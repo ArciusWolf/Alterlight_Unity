@@ -3,10 +3,14 @@ using UnityEngine;
 public class CyrusAttack : MonoBehaviour
 {
     public SwordAttack swordAttack;
+    PlayerSwitch playerSwitch;
 
-    void OnFire()
+    public void OnFire()
     {
-        GetComponent<Animator>().SetTrigger("isAttack");
+            if (GetComponent<PlayerSwitch>().WolfyActive == false)
+            {
+                GetComponent<Animator>().SetTrigger("isAttack");
+            }
     }
 
     public void SwordAttack()
