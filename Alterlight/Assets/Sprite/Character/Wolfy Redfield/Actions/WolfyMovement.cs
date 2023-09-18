@@ -28,6 +28,11 @@ public class WolfyMovement : MonoBehaviour
     // FixedUpdate is called at a fixed rate
     void FixedUpdate()
     {
+        // play walk up animation
+        if (canMove)
+        {
+
+        }
         if (canMove)
         {
             if (movementInput != Vector2.zero)
@@ -57,15 +62,34 @@ public class WolfyMovement : MonoBehaviour
             {
                 spriteRenderer.flipX = false;
             }
+            if (movementInput.y > 0)
+            {
+                anim.SetBool("isWalkUp", true);
+            }
+            else
+            {
+                anim.SetBool("isWalkUp", false);
+            }
+            // play walk down animation
+            if (movementInput.y < 0)
+            {
+                anim.SetBool("isWalkDown", true);
+            }
+            else
+            {
+                anim.SetBool("isWalkDown", false);
+            }
         }
     }
+
 
     private bool TryMove(Vector2 direction)
     {
         int Count = rb.Cast(direction, movementFilter, castCollisions, speed * Time.fixedDeltaTime + collisionOffset);
         if (Count == 0)
         {
-            rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
+            Vector2 newPosition = Vector2.Lerp(rb.position, rb.position + direction * speed * Time.fixedDeltaTime, 0.5f);
+            rb.MovePosition(newPosition);
             return true;
         }
         else
@@ -73,6 +97,7 @@ public class WolfyMovement : MonoBehaviour
             return false;
         }
     }
+
 
     void OnMove(InputValue movementValue)
     {

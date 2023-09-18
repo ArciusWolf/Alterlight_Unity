@@ -21,19 +21,17 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 280784273, guid: a9a7d948e36d51843a49c688f2b92a15, type: 3}
-    - time: 0.1
-      value: {fileID: 1114940851, guid: a9a7d948e36d51843a49c688f2b92a15, type: 3}
+      value: {fileID: 727722165, guid: 886927ab50d2fc6498340a9e975aa6cb, type: 3}
     - time: 0.2
-      value: {fileID: 1586620144, guid: a9a7d948e36d51843a49c688f2b92a15, type: 3}
-    - time: 0.3
-      value: {fileID: 30426083, guid: a9a7d948e36d51843a49c688f2b92a15, type: 3}
+      value: {fileID: 1938346578, guid: 886927ab50d2fc6498340a9e975aa6cb, type: 3}
+    - time: 0.4
+      value: {fileID: -44260752, guid: 886927ab50d2fc6498340a9e975aa6cb, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
     flags: 2
-  m_SampleRate: 10
+  m_SampleRate: 5
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -50,16 +48,15 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 280784273, guid: a9a7d948e36d51843a49c688f2b92a15, type: 3}
-    - {fileID: 1114940851, guid: a9a7d948e36d51843a49c688f2b92a15, type: 3}
-    - {fileID: 1586620144, guid: a9a7d948e36d51843a49c688f2b92a15, type: 3}
-    - {fileID: 30426083, guid: a9a7d948e36d51843a49c688f2b92a15, type: 3}
+    - {fileID: 727722165, guid: 886927ab50d2fc6498340a9e975aa6cb, type: 3}
+    - {fileID: 1938346578, guid: 886927ab50d2fc6498340a9e975aa6cb, type: 3}
+    - {fileID: -44260752, guid: 886927ab50d2fc6498340a9e975aa6cb, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.4
+    m_StopTime: 0.6
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -86,7 +83,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.3
+  - time: 0.6
     functionName: EndAttack
     data: 
     objectReferenceParameter: {fileID: 0}
