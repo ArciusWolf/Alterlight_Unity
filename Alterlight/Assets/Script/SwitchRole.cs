@@ -7,7 +7,6 @@ public class PlayerSwitch : MonoBehaviour
 {
     public WolfyMovement WolfyController;
     public CyrusMovement CyrusController;
-    SwordAttack swordAttack;
     public CinemachineVirtualCamera cam;
     Animator anim;
     public bool WolfyActive;
@@ -16,7 +15,6 @@ public class PlayerSwitch : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        swordAttack = GetComponent<SwordAttack>();
         cam.Follow = WolfyController.transform;
         cam.LookAt = WolfyController.transform;
         WolfyActive = true;
@@ -25,7 +23,7 @@ public class PlayerSwitch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             Switch();
         }
