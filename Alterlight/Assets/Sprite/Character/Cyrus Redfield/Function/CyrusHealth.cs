@@ -1,22 +1,31 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DamageNumbersPro;
 
 public class CyrusHealth : MonoBehaviour, Damageable
 {
-    public HealthBar healthBar;
-    public float health = 100f;
-    public float currentHP;
-    public GameObject DamageText;
-    public TextMeshProUGUI healthText;
+    public HealthBar healthBar; // Reference to the HealthBar component
+    public float health = 100f; // Initial health value
+    public float currentHP; // Current health value
+
     Animator anim;
-    bool _targetable = true;
+
+    // Reference to the Transform component for text position
+    public Transform textPosition;
+    // Reference to the DamageNumber component
+    public DamageNumber dmgText;
+
+    bool _targetable = true; // Flag to determine if the object is targetable
 
     // Start is called before the first frame update
     void Start()
     {
+        // Set the maximum health value for the health bar
         healthBar.setMaxHealth(health);
+
         anim = GetComponent<Animator>();
+        textPosition = GetComponent<Transform>();
     }
 
     public float Health
@@ -25,51 +34,59 @@ public class CyrusHealth : MonoBehaviour, Damageable
         {
             if (value < health)
             {
-                anim.SetTrigger("isHit");
-                RectTransform textDmg = Instantiate(DamageText).GetComponent<RectTransform>();
-                textDmg.transform.position = Camera.main.WorldToScreenPoint(gameObject.transform.position);
-
-                Canvas canvas = GameObject.FindGameObjectWithTag("Hub").GetComponent<Canvas>();
-                textDmg.SetParent(canvas.transform);
+                anim.SetTrigger("isHit"); // Trigger the "isHit" animation if the health value is decreased
             }
-            health = value;
+            health = value; // Update the health value
 
             if (health <= 0)
             {
-                Dead();
-                Targetable = false;
+                Dead(); // Call the Dead method if the health reaches or goes below 0
+                Targetable = false; // Set the targetable flag to false
             }
         }
         get
         {
-            return health;
+            return health; // Return the current health value
         }
     }
 
     public void Dead()
     {
-        anim.SetBool("isDead", true);
+        anim.SetBool("isDead", true); // Set the "isDead" parameter of the animator to true
     }
 
     public bool Targetable
     {
-        get { return _targetable; }
+        get { return _targetable; } // Return the targetable flag
         set
         {
-            _targetable = value;
+            _targetable = value; // Update the targetable flag
         }
     }
 
     public void OnHit(float damage)
     {
+        // Reduce the health by the damage amount
         Health -= damage;
-        healthText.text = damage.ToString();
+        // Set the damage text to follow the object
+        dmgText.SetFollowedTarget(textPosition);
+        // Spawn a damage number at the object's position
+        DamageNumber damageNumber = dmgText.Spawn(GetCyrusPosition(), damage);
+        // Update the health bar with the new health value
         healthBar.setHealth(health);
     }
 
     public void OnHit(float damage, Vector2 knockback)
     {
         Health -= damage;
-        healthText.text = damage.ToString();
+        dmgText.SetFollowedTarget(textPosition);
+        DamageNumber damageNumber = dmgText.Spawn(GetCyrusPosition(), damage);
+        damageNumber.SetFollowedTarget(textPosition);
+    }
+
+    // Get the Cyrus gameObject position as Vector3
+    public Vector3 GetCyrusPosition()
+    {
+        return gameObject.transform.position;
     }
 }

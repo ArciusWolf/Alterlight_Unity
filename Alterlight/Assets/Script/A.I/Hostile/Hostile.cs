@@ -49,6 +49,16 @@ public class Hostile : MonoBehaviour
         }
     }
 
+    public void LockMovement()
+    {
+        canMove = false;
+    }
+
+    public void UnlockMovement()
+    {
+        canMove = true;
+    }
+
     public void setNewDestination()
     {
         // Set a delay

@@ -4,12 +4,18 @@ using UnityEngine;
 using TMPro;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEditor.Tilemaps;
+using DamageNumbersPro;
 
 public class HostileFunction : MonoBehaviour, Damageable
 {
     public float health = 20f;
     bool _targetable = true;
-    public GameObject DamageText;
+
+    // Reference to the Transform component for text position
+    public Transform textPosition;
+    // Reference to the DamageNumber component
+    public DamageNumber dmgText;
+
     public List<Collider2D> detectedObjects = new List<Collider2D>();
     Animator anim;
     Rigidbody2D rigid;
@@ -20,6 +26,7 @@ public class HostileFunction : MonoBehaviour, Damageable
         anim = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
         physicsCollider = GetComponent<Collider2D>();
+        textPosition = GetComponent<Transform>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -45,10 +52,6 @@ public class HostileFunction : MonoBehaviour, Damageable
             if (value < health)
             {
                 anim.SetTrigger("isHit");
-                RectTransform textDmg = Instantiate(DamageText).GetComponent<RectTransform>();
-                textDmg.transform.position = Camera.main.WorldToScreenPoint(gameObject.transform.position);
-                Canvas canvas = GameObject.FindGameObjectWithTag("Hub").GetComponent<Canvas>();
-                textDmg.SetParent(canvas.transform);
             }
             health = value;
             if (health <= 0)
@@ -82,16 +85,29 @@ public class HostileFunction : MonoBehaviour, Damageable
     public void RemoveEnemy()
     {
         Destroy(gameObject, 3);
+        
     }
 
     public void OnHit(float damage)
     {
         Health -= damage;
+        // Set the damage text to follow the object
+        dmgText.SetFollowedTarget(textPosition);
+        // Spawn a damage number at the object's position
+        DamageNumber damageNumber = dmgText.Spawn(GetPosition(), damage);
     }
 
     public void OnHit(float damage, Vector2 knockback)
     {
         Health -= damage;
+        dmgText.SetFollowedTarget(textPosition);
+        DamageNumber damageNumber = dmgText.Spawn(GetPosition(), damage);
+        damageNumber.SetFollowedTarget(textPosition);
         rigid.AddForce(knockback);
+    }
+
+    public Vector3 GetPosition()
+    {
+        return gameObject.transform.position;
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Cinemachine;
 
 public class PlayerSwitch : MonoBehaviour
@@ -8,6 +9,8 @@ public class PlayerSwitch : MonoBehaviour
     public WolfyMovement WolfyController;
     public CyrusMovement CyrusController;
     public CinemachineVirtualCamera cam;
+    public GameObject PlayerWolfy; 
+    public GameObject PlayerCyrus; 
     Animator anim;
     public bool WolfyActive;
 
@@ -18,6 +21,9 @@ public class PlayerSwitch : MonoBehaviour
         cam.Follow = WolfyController.transform;
         cam.LookAt = WolfyController.transform;
         WolfyActive = true;
+        // disable gameObject PlayerCyrus
+        PlayerCyrus.SetActive(false);
+        PlayerWolfy.SetActive(true);
     }
 
     // Update is called once per frame
@@ -39,6 +45,8 @@ public class PlayerSwitch : MonoBehaviour
             WolfyController.enabled = false;
             CyrusController.enabled = true;
             WolfyActive = false;
+            PlayerCyrus.SetActive(true);
+            PlayerWolfy.SetActive(false);
         }
         else if (WolfyActive == false)
         {
@@ -47,6 +55,8 @@ public class PlayerSwitch : MonoBehaviour
             WolfyController.enabled = true;
             CyrusController.enabled = false;
             WolfyActive = true;
+            PlayerCyrus.SetActive(false);
+            PlayerWolfy.SetActive(true);
         }
     }
 }

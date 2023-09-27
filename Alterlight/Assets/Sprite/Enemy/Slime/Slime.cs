@@ -41,19 +41,6 @@ public class Slime : MonoBehaviour
             anim.SetBool("isMoving", false);
         }
     }
-
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.tag == "Player")
-    //    {
-    //        Damageable damageable = collision.collider.GetComponent<Damageable>();
-    //        if (damageable != null)
-    //        {
-    //            damageable.OnHit(damage);
-    //        }
-    //    }
-    //}
-
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player" && GetComponent<Collider2D>().IsTouching(collision))
@@ -66,10 +53,6 @@ public class Slime : MonoBehaviour
             }
         }
     }
-
-
-
-
 
     void setNewDestination()
     {

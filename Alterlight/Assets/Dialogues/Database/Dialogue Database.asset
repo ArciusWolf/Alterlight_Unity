@@ -54,11 +54,11 @@ MonoBehaviour:
       type: 2
       typeString: CustomFieldType_Boolean
     - title: Display Name
-      value: Wolfy Redfield
+      value: Wolfy
       type: 0
       typeString: 
-    portrait: {fileID: 2800000, guid: 61d556c7498fc254bb91e7ec36b2b123, type: 3}
-    spritePortrait: {fileID: 21300000, guid: 61d556c7498fc254bb91e7ec36b2b123, type: 3}
+    portrait: {fileID: 2800000, guid: 5c39d6d95be88c246b07e3e9f848bd31, type: 3}
+    spritePortrait: {fileID: 21300000, guid: e48c0b8718d937f42bf13b485aa51dc5, type: 3}
     alternatePortraits: []
     spritePortraits: []
   - id: 2
@@ -101,8 +101,8 @@ MonoBehaviour:
       value: False
       type: 2
       typeString: CustomFieldType_Boolean
-    portrait: {fileID: 2800000, guid: 1d559c8f47a7d2c4ea5586cc0acba29d, type: 3}
-    spritePortrait: {fileID: 21300000, guid: 1d559c8f47a7d2c4ea5586cc0acba29d, type: 3}
+    portrait: {fileID: 2800000, guid: 8b92b69a2d781194d878d4406901af9e, type: 3}
+    spritePortrait: {fileID: 21300000, guid: a67910c0b2682d645adefa99cd9bd8dd, type: 3}
     alternatePortraits: []
     spritePortraits: []
   items:
@@ -111,7 +111,7 @@ MonoBehaviour:
     - title: Name
       value: Stars
       type: 0
-      typeString: 
+      typeString: CustomFieldType_Text
     - title: Pictures
       value: '[]'
       type: 3
@@ -119,19 +119,19 @@ MonoBehaviour:
     - title: Description
       value: A random ask me to find star.
       type: 0
-      typeString: 
+      typeString: CustomFieldType_Text
     - title: Success Description
       value: I found a fallen star.
       type: 0
-      typeString: 
+      typeString: CustomFieldType_Text
     - title: Failure Description
       value: 
       type: 0
-      typeString: 
+      typeString: CustomFieldType_Text
     - title: State
       value: unassigned
       type: 0
-      typeString: 
+      typeString: CustomFieldType_QuestState
     - title: Is Item
       value: False
       type: 2
@@ -139,7 +139,7 @@ MonoBehaviour:
     - title: Display Name
       value: Find Stars
       type: 0
-      typeString: 
+      typeString: CustomFieldType_Text
     - title: Trackable
       value: True
       type: 2
@@ -155,11 +155,11 @@ MonoBehaviour:
     - title: Entry 1 State
       value: active
       type: 0
-      typeString: 
+      typeString: CustomFieldType_QuestState
     - title: Entry 1
       value: '[var=Stars.NumCollected]/3 Stars'
       type: 0
-      typeString: 
+      typeString: CustomFieldType_Text
   locations: []
   variables:
   - id: 1
@@ -176,20 +176,6 @@ MonoBehaviour:
       value: 
       type: 0
       typeString: 
-  - id: 2
-    fields:
-    - title: Name
-      value: Asking
-      type: 0
-      typeString: 
-    - title: Initial Value
-      value: False
-      type: 2
-      typeString: CustomFieldType_Boolean
-    - title: Description
-      value: 
-      type: 0
-      typeString: 
   - id: 3
     fields:
     - title: Name
@@ -200,6 +186,20 @@ MonoBehaviour:
       value: 0
       type: 1
       typeString: CustomFieldType_Number
+    - title: Description
+      value: 
+      type: 0
+      typeString: 
+  - id: 2
+    fields:
+    - title: Name
+      value: Asking
+      type: 0
+      typeString: 
+    - title: Initial Value
+      value: False
+      type: 2
+      typeString: CustomFieldType_Boolean
     - title: Description
       value: 
       type: 0
@@ -386,7 +386,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: :D
+        value: :DdaswfesAAAAAAAAAAAAAAAAAAAAAAAAffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
         type: 0
         typeString: 
       - title: Sequence
@@ -420,7 +420,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 163.01767
+        x: 161.37833
         y: 140.23566
         width: 160
         height: 30
@@ -585,7 +585,7 @@ MonoBehaviour:
         height: 30
     entryGroups: []
     canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 0.7000003
+    canvasZoom: 0.5500005
   - id: 2
     fields:
     - title: Title
@@ -918,7 +918,9 @@ MonoBehaviour:
       userScript: 'SetQuestState("Stars", "active");
 
         ShowAlert("Mission:
-        Find the Stars")'
+        Find the Stars");
+
+        Variable["Stars.NumCollected"] = 0'
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -1022,13 +1024,13 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
-      userScript: SetQuestState("Stars", "success")
+      userScript: 
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 283.91098
+        x: 286.35
         y: 319.15042
         width: 160
         height: 30
@@ -1234,7 +1236,13 @@ MonoBehaviour:
       delaySimStatus: 0
       falseConditionAction: Block
       conditionPriority: 2
-      outgoingLinks: []
+      outgoingLinks:
+      - originConversationID: 2
+        originDialogueID: 11
+        destinationConversationID: 2
+        destinationDialogueID: 14
+        isConnector: 0
+        priority: 2
       conditionsString: 
       userScript: 
       onExecute:
@@ -1334,7 +1342,7 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
-      userScript: 
+      userScript: SetQuestState("Stars", "success")
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -1344,9 +1352,58 @@ MonoBehaviour:
         y: 334.18823
         width: 160
         height: 30
+    - id: 14
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: 
+      - title: Description
+        value: 
+        type: 0
+        typeString: 
+      - title: Actor
+        value: 3
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Dialogue Text
+        value: Take your time.
+        type: 0
+        typeString: 
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: 
+      conversationID: 2
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks: []
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 683.02734
+        y: 340.1584
+        width: 160
+        height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 255.01999, y: 0}
-    canvasZoom: 0.79000014
+    canvasScrollPosition: {x: 0, y: 0}
+    canvasZoom: 0.3700004
   syncInfo:
     syncActors: 0
     syncItems: 0
