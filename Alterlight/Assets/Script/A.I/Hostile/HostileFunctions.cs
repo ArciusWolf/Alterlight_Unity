@@ -15,6 +15,9 @@ public class HostileFunction : MonoBehaviour, Damageable
     // Reference to the DamageNumber component
     public DamageNumber dmgText;
 
+    //Get health potion prefab
+    public HealthPot healthPot;
+
     public List<Collider2D> detectedObjects = new List<Collider2D>();
     Animator anim;
     Rigidbody2D rigid;
@@ -80,6 +83,9 @@ public class HostileFunction : MonoBehaviour, Damageable
     public void Dead()
     {
         anim.SetTrigger("isDead");
+        // Instantiate a health potion at the object's position
+        Instantiate(healthPot, transform.position, Quaternion.identity);
+
     }
 
     public void RemoveEnemy()

@@ -11,7 +11,9 @@ public class HealthPot : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            // add 1 to healthPotions
             potCounter.healthPotions += 1;
+            Destroy(gameObject);
         }
     }
 }
