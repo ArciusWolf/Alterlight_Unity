@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5486573544430754156}
   - component: {fileID: 6390143814053858585}
   - component: {fileID: 2977544230370796108}
+  - component: {fileID: 1853369044291943301}
   - component: {fileID: 38358821009866217}
   - component: {fileID: 5172332595687660065}
   - component: {fileID: 3517524779887596832}
@@ -248,6 +249,24 @@ MonoBehaviour:
   currentHP: 0
   textPosition: {fileID: 2832749855243174653}
   dmgText: {fileID: 9123425777532858279, guid: 1fe910dc144032647ad700b5006aba47, type: 3}
+  healText: {fileID: 0}
+  alertText: {fileID: 0}
+--- !u!114 &1853369044291943301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2408057883740707567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 666f3b871c571e2418a82fe64db8b145, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  potCounter: {fileID: 0}
+  textPosition: {fileID: 2832749855243174653}
+  healText: {fileID: 9123425777532858279, guid: cbec895a7b1717f46928fcff1714c38e, type: 3}
+  alertText: {fileID: 9123425777532858279, guid: 71d178cac85f9764198bcee44f47087e, type: 3}
 --- !u!114 &38358821009866217
 MonoBehaviour:
   m_ObjectHideFlags: 0

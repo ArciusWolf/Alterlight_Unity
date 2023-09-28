@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System.Runtime.InteropServices.WindowsRuntime;
-using UnityEditor.Tilemaps;
 using DamageNumbersPro;
 
 public class HostileFunction : MonoBehaviour, Damageable
 {
+    public EnemyHPBar healthBar; // Reference to the HealthBar component
     public float health = 20f;
     bool _targetable = true;
 
@@ -23,6 +22,7 @@ public class HostileFunction : MonoBehaviour, Damageable
 
     public void Start()
     {
+        healthBar.setMaxHealth(health);
         anim = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
         physicsCollider = GetComponent<Collider2D>();
@@ -84,7 +84,7 @@ public class HostileFunction : MonoBehaviour, Damageable
 
     public void RemoveEnemy()
     {
-        Destroy(gameObject, 3);
+        Destroy(gameObject);
         
     }
 
@@ -95,6 +95,7 @@ public class HostileFunction : MonoBehaviour, Damageable
         dmgText.SetFollowedTarget(textPosition);
         // Spawn a damage number at the object's position
         DamageNumber damageNumber = dmgText.Spawn(GetPosition(), damage);
+        healthBar.setHealth(health);
     }
 
     public void OnHit(float damage, Vector2 knockback)
@@ -104,6 +105,7 @@ public class HostileFunction : MonoBehaviour, Damageable
         DamageNumber damageNumber = dmgText.Spawn(GetPosition(), damage);
         damageNumber.SetFollowedTarget(textPosition);
         rigid.AddForce(knockback);
+        healthBar.setHealth(health);
     }
 
     public Vector3 GetPosition()

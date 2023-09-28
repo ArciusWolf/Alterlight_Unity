@@ -8,9 +8,14 @@ public class PlayerSwitch : MonoBehaviour
 {
     public WolfyMovement WolfyController;
     public CyrusMovement CyrusController;
+
     public CinemachineVirtualCamera cam;
-    public GameObject PlayerWolfy; 
-    public GameObject PlayerCyrus; 
+
+    public GameObject PlayerWolfy;
+    public GameObject PlayerCyrus;
+
+    public GameObject MiniWolfy;
+    public GameObject MiniCyrus;
     Animator anim;
     public bool WolfyActive;
 
@@ -47,6 +52,8 @@ public class PlayerSwitch : MonoBehaviour
             WolfyActive = false;
             PlayerCyrus.SetActive(true);
             PlayerWolfy.SetActive(false);
+            MiniCyrus.SetActive(false);
+            MiniWolfy.SetActive(true);
         }
         else if (WolfyActive == false)
         {
@@ -57,6 +64,8 @@ public class PlayerSwitch : MonoBehaviour
             WolfyActive = true;
             PlayerCyrus.SetActive(false);
             PlayerWolfy.SetActive(true);
+            MiniCyrus.SetActive(true);
+            MiniWolfy.SetActive(false);
         }
     }
 }

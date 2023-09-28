@@ -21,7 +21,7 @@ MonoBehaviour:
   backgroundVideo: {fileID: 32900000, guid: 488f8fa32c1a5f24cbac413b5e63b1f6, type: 3}
   backgroundPreserveAspect: 0
   backgroundSpeed: 1.25
-  primaryColor: {r: 0.3882353, g: 0.7764706, b: 1, a: 1}
+  primaryColor: {r: 0.6784314, g: 0, b: 0.02745098, a: 1}
   secondaryColor: {r: 1, g: 1, b: 1, a: 1}
   primaryReversed: {r: 0.1764706, g: 0.1764706, b: 0.1764706, a: 1}
   negativeColor: {r: 1, g: 0.43137255, b: 0.39215687, a: 1}
@@ -29,7 +29,7 @@ MonoBehaviour:
   lightFont: {fileID: 11400000, guid: 501c3584798b7544daed173223ef3afd, type: 2}
   regularFont: {fileID: 11400000, guid: baf5990ef136e594abc52299c06d9b48, type: 2}
   mediumFont: {fileID: 11400000, guid: b04f3173f946b754db673ac13842f4c1, type: 2}
-  semiBoldFont: {fileID: 11400000, guid: 581c047ed60765249b12f37ff2895497, type: 2}
+  semiBoldFont: {fileID: 11400000, guid: 03a207bdd4bef0e45906fbe6f56aa653, type: 2}
   boldFont: {fileID: 11400000, guid: 194c956b3d864664890e731c63fd4a02, type: 2}
   gameLogo: {fileID: 21300000, guid: 6ac53f15ba5fce14596a41cdaff66b16, type: 3}
   logoColor: {r: 0.3882353, g: 0.7764706, b: 1, a: 1}

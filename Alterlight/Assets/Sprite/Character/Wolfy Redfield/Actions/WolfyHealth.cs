@@ -13,8 +13,12 @@ public class WolfyHealth : MonoBehaviour, Damageable
 
     // Reference to the Transform component for text position
     public Transform textPosition;
-    // Reference to the DamageNumber component
+    // Reference to the DamageNumber component - taking damage
     public DamageNumber dmgText;
+    // Reference to the DamageNumber component - healing
+    public DamageNumber healText;
+    // Reference to the DamageNumber component - alert
+    public DamageNumber alertText;
 
     bool _targetable = true; // Flag to determine if the object is targetable
 
@@ -23,9 +27,18 @@ public class WolfyHealth : MonoBehaviour, Damageable
     {
         // Set the maximum health value for the health bar
         healthBar.setMaxHealth(health);
-
         anim = GetComponent<Animator>();
         textPosition = GetComponent<Transform>();
+    }
+
+    // limit health value to 100 only
+    public float HealthLimit(float health)
+    {
+        if (health > 100)
+        {
+            health = 100;
+        }
+        return health;
     }
 
     public float Health

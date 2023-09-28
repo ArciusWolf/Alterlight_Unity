@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 475693732182988069}
   - component: {fileID: 154473732071071871}
   - component: {fileID: 2446117731302043323}
+  - component: {fileID: 367689961834068064}
   - component: {fileID: 8206162761955297686}
   - component: {fileID: 8717782870514896838}
   - component: {fileID: 1920806433572509564}
@@ -418,6 +419,24 @@ MonoBehaviour:
   currentHP: 100
   textPosition: {fileID: 7651367569304447163}
   dmgText: {fileID: 9123425777532858279, guid: 1fe910dc144032647ad700b5006aba47, type: 3}
+  healText: {fileID: 9123425777532858279, guid: cbec895a7b1717f46928fcff1714c38e, type: 3}
+  alertText: {fileID: 9123425777532858279, guid: 71d178cac85f9764198bcee44f47087e, type: 3}
+--- !u!114 &367689961834068064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8766007535330527760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3110c97546689ca4fb3eb2559cd7ecb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  potCounter: {fileID: 0}
+  textPosition: {fileID: 7651367569304447163}
+  healText: {fileID: 9123425777532858279, guid: cbec895a7b1717f46928fcff1714c38e, type: 3}
+  alertText: {fileID: 9123425777532858279, guid: 71d178cac85f9764198bcee44f47087e, type: 3}
 --- !u!114 &8206162761955297686
 MonoBehaviour:
   m_ObjectHideFlags: 0

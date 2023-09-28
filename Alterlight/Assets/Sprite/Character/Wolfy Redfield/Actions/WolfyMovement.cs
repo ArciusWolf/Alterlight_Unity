@@ -113,4 +113,10 @@ public class WolfyMovement : MonoBehaviour
     {
         canMove = true;
     }
+
+    // get movementInput then return
+    public Vector2 GetMovementInput()
+    {
+        return movementInput;
+    }
 }
