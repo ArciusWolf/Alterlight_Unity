@@ -1712,10 +1712,12 @@ MonoBehaviour:
   SFXSource: {fileID: 580792389}
   background: {fileID: 8300000, guid: 7f3ac517a50f8e240945633dddbdd7fb, type: 3}
   Slash: {fileID: 8300000, guid: 6d875ece5697cf64cb65f43d55d43978, type: 3}
+  PlayerHit: {fileID: 0}
   Hit: {fileID: 8300000, guid: dbdf09ee2b558b84ba61f2bb94e4ecd2, type: 3}
   PlayerDeath: {fileID: 8300000, guid: aa9de58a7e82e11469150d01f2e0e33c, type: 3}
   EnemyDeath: {fileID: 0}
   Healing: {fileID: 8300000, guid: 22e473a7403a8ae45ac926a3331ef9ae, type: 3}
+  HealthPickUp: {fileID: 0}
 --- !u!82 &267087668
 AudioSource:
   m_ObjectHideFlags: 0
@@ -116124,7 +116126,7 @@ Transform:
   m_GameObject: {fileID: 652406024}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.667, y: -0.393, z: 0}
+  m_LocalPosition: {x: 9.461, y: -0.823, z: 0}
   m_LocalScale: {x: 0.7838, y: 0.7838, z: 0.7838}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -123384,7 +123386,7 @@ Tilemap:
       - {fileID: -332127495, guid: 2c1463beeee5c8044af802e2eaec55e6, type: 3}
       - {fileID: 1640101385, guid: 2c1463beeee5c8044af802e2eaec55e6, type: 3}
       - {fileID: 1197155428, guid: 2c1463beeee5c8044af802e2eaec55e6, type: 3}
-      m_AnimationSpeed: 4.172653
+      m_AnimationSpeed: 2.589775
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
@@ -125134,7 +125136,7 @@ Tilemap:
       - {fileID: -165571454, guid: d8c15b10099ad9840af6f32e20f09286, type: 3}
       - {fileID: -812556801, guid: d8c15b10099ad9840af6f32e20f09286, type: 3}
       - {fileID: 472989652, guid: d8c15b10099ad9840af6f32e20f09286, type: 3}
-      m_AnimationSpeed: 2.9865615
+      m_AnimationSpeed: 1.1757886
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 83, y: 10, z: 0}
@@ -125157,7 +125159,7 @@ Tilemap:
       - {fileID: -165571454, guid: d8c15b10099ad9840af6f32e20f09286, type: 3}
       - {fileID: -812556801, guid: d8c15b10099ad9840af6f32e20f09286, type: 3}
       - {fileID: 472989652, guid: d8c15b10099ad9840af6f32e20f09286, type: 3}
-      m_AnimationSpeed: 1.2269006
+      m_AnimationSpeed: 2.20574
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:

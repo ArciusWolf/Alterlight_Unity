@@ -5,7 +5,12 @@ using UnityEngine;
 public class HealthPot : MonoBehaviour
 {
     public PotCounter potCounter;
-    // Start is called before the first frame update
+    AudioManager audioManager;
+
+    public void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -13,6 +18,8 @@ public class HealthPot : MonoBehaviour
         {
             // add 1 to healthPotions
             potCounter.healthPotions += 1;
+            audioManager.PlaySFX(audioManager.HealthPickUp);
+            // destroy the health potion
             Destroy(gameObject);
         }
     }

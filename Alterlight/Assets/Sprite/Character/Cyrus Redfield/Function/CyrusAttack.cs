@@ -4,12 +4,19 @@ public class CyrusAttack : MonoBehaviour
 {
     public SwordAttack swordAttack;
     PlayerSwitch playerSwitch;
+    AudioManager audioManager;
+
+    public void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     public void OnFire()
     {
             if (GetComponent<PlayerSwitch>().WolfyActive == false)
             {
                 GetComponent<Animator>().SetTrigger("isAttack");
+                audioManager.PlaySFX(audioManager.Slash);
             }
     }
 

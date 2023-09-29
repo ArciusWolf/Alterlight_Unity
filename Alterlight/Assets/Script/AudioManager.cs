@@ -9,10 +9,12 @@ public class AudioManager : MonoBehaviour
 
     public AudioClip background;
     public AudioClip Slash;
+    public AudioClip PlayerHit;
     public AudioClip Hit;
     public AudioClip PlayerDeath;
     public AudioClip EnemyDeath;
     public AudioClip Healing;
+    public AudioClip HealthPickUp;
 
     private void Start()
     {

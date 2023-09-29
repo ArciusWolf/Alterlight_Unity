@@ -20,6 +20,9 @@ public class CyrusHealth : MonoBehaviour, Damageable
     // Reference to the DamageNumber component - alert
     public DamageNumber alertText;
 
+    // Reference to the AudioManager component
+    AudioManager audioManager;
+
     bool _targetable = true; // Flag to determine if the object is targetable
 
     // Start is called before the first frame update
@@ -29,6 +32,7 @@ public class CyrusHealth : MonoBehaviour, Damageable
         healthBar.setMaxHealth(health);
         anim = GetComponent<Animator>();
         textPosition = GetComponent<Transform>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     // limit health value to 100 only
@@ -48,12 +52,14 @@ public class CyrusHealth : MonoBehaviour, Damageable
             if (value < health)
             {
                 anim.SetTrigger("isHit"); // Trigger the "isHit" animation if the health value is decreased
+                audioManager.PlaySFX(audioManager.PlayerHit);
             }
             health = value; // Update the health value
 
             if (health <= 0)
             {
                 Dead(); // Call the Dead method if the health reaches or goes below 0
+                audioManager.PlaySFX(audioManager.PlayerDeath);
                 Targetable = false; // Set the targetable flag to false
             }
         }
@@ -66,6 +72,7 @@ public class CyrusHealth : MonoBehaviour, Damageable
     public void Dead()
     {
         anim.SetBool("isDead", true); // Set the "isDead" parameter of the animator to true
+
     }
 
     public bool Targetable

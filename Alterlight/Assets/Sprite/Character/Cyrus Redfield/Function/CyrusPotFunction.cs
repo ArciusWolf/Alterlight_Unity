@@ -14,10 +14,13 @@ public class CyrusPotFunction : MonoBehaviour
     public DamageNumber healText;
     // Reference to the DamageNumber component - alert
     public DamageNumber alertText;
+    AudioManager audioManager;
+
     // Start is called before the first frame update
     void Start()
     {
         cyrusHealth = GetComponent<CyrusHealth>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -33,6 +36,7 @@ public class CyrusPotFunction : MonoBehaviour
                 cyrusHealth.healText.SetFollowedTarget(cyrusHealth.textPosition);
                 DamageNumber damageNumber = cyrusHealth.healText.Spawn(cyrusHealth.GetCyrusPosition(), 20);
                 damageNumber.SetFollowedTarget(cyrusHealth.textPosition);
+                audioManager.PlaySFX(audioManager.Healing);
             }
             else if (potCounter.healthPotions == 0)
             {
