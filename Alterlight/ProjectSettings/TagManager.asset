@@ -8,6 +8,7 @@ TagManager:
   - Hub
   - Detector
   - NPC
+  - Audio
   layers:
   - Default
   - TransparentFX

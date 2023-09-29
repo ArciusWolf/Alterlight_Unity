@@ -15,13 +15,13 @@ public class HostileFunction : MonoBehaviour, Damageable
     // Reference to the DamageNumber component
     public DamageNumber dmgText;
 
-    //Get health potion prefab
-    public HealthPot healthPot;
-
     public List<Collider2D> detectedObjects = new List<Collider2D>();
     Animator anim;
     Rigidbody2D rigid;
     Collider2D physicsCollider;
+
+    // Reference to the AudioManager component
+    AudioManager audioManager;
 
     public void Start()
     {
@@ -30,6 +30,7 @@ public class HostileFunction : MonoBehaviour, Damageable
         rigid = GetComponent<Rigidbody2D>();
         physicsCollider = GetComponent<Collider2D>();
         textPosition = GetComponent<Transform>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -55,6 +56,7 @@ public class HostileFunction : MonoBehaviour, Damageable
             if (value < health)
             {
                 anim.SetTrigger("isHit");
+                audioManager.PlaySFX(audioManager.Hit);
             }
             health = value;
             if (health <= 0)
@@ -83,9 +85,6 @@ public class HostileFunction : MonoBehaviour, Damageable
     public void Dead()
     {
         anim.SetTrigger("isDead");
-        // Instantiate a health potion at the object's position
-        Instantiate(healthPot, transform.position, Quaternion.identity);
-
     }
 
     public void RemoveEnemy()

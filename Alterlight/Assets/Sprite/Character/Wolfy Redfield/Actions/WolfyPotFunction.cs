@@ -15,9 +15,12 @@ public class WolfyPotFunction : MonoBehaviour
     // Reference to the DamageNumber component - alert
     public DamageNumber alertText;
     // Start is called before the first frame update
+    AudioManager audioManager;
+
     void Start()
     {
         wolfyHealth = GetComponent<WolfyHealth>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -33,6 +36,7 @@ public class WolfyPotFunction : MonoBehaviour
                 wolfyHealth.healText.SetFollowedTarget(wolfyHealth.textPosition);
                 DamageNumber damageNumber = wolfyHealth.healText.Spawn(wolfyHealth.GetWolfyPosition(), 20);
                 damageNumber.SetFollowedTarget(wolfyHealth.textPosition);
+                audioManager.PlaySFX(audioManager.Healing);
             }
             else if (potCounter.healthPotions == 0)
             {
