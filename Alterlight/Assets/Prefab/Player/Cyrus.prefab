@@ -36,9 +36,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2408057883740707567}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10.265173, y: -0.32280177, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2819, y: 1.2819, z: 1.2819}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8993820569666415229}
@@ -84,8 +84,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 520110077, guid: aeec37f49c987924a84b5c3c4f77262f, type: 3}
+  m_SortingOrder: 100
+  m_Sprite: {fileID: -607728333, guid: 99e4bdc40d061194093042c1c70370a8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -185,18 +185,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.009588242, y: -0.13894327}
+  m_Offset: {x: 0.0016329661, y: -0.064884305}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.32}
+    oldSize: {x: 0.12, y: 0.16}
     newSize: {x: 0.48, y: 0.48}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.09443474, y: 0.060123235}
+  m_Size: {x: 0.06750487, y: 0.02870427}
   m_EdgeRadius: 0
 --- !u!95 &5486573544430754156
 Animator:
@@ -249,8 +249,8 @@ MonoBehaviour:
   currentHP: 0
   textPosition: {fileID: 2832749855243174653}
   dmgText: {fileID: 9123425777532858279, guid: 1fe910dc144032647ad700b5006aba47, type: 3}
-  healText: {fileID: 0}
-  alertText: {fileID: 0}
+  healText: {fileID: 9123425777532858279, guid: cbec895a7b1717f46928fcff1714c38e, type: 3}
+  alertText: {fileID: 9123425777532858279, guid: 71d178cac85f9764198bcee44f47087e, type: 3}
 --- !u!114 &1853369044291943301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,6 +324,8 @@ MonoBehaviour:
   cam: {fileID: 0}
   PlayerWolfy: {fileID: 0}
   PlayerCyrus: {fileID: 0}
+  MiniWolfy: {fileID: 0}
+  MiniCyrus: {fileID: 0}
   WolfyActive: 0
 --- !u!114 &7522033253557685339
 MonoBehaviour:
@@ -407,7 +409,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.6399539, y: -0.027149573}
+  m_Offset: {x: -0.04876346, y: 0.026320167}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -418,7 +420,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5799078, y: 0.08710262}
+  m_Size: {x: 0.20247315, y: 0.13732524}
   m_EdgeRadius: 0
 --- !u!114 &7599046611768471920
 MonoBehaviour:
