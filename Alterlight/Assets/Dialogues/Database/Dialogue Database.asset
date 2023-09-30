@@ -2514,19 +2514,7 @@ MonoBehaviour:
       - originConversationID: 3
         originDialogueID: 18
         destinationConversationID: 3
-        destinationDialogueID: 19
-        isConnector: 0
-        priority: 2
-      - originConversationID: 3
-        originDialogueID: 18
-        destinationConversationID: 3
-        destinationDialogueID: 24
-        isConnector: 0
-        priority: 2
-      - originConversationID: 3
-        originDialogueID: 18
-        destinationConversationID: 3
-        destinationDialogueID: 27
+        destinationDialogueID: 30
         isConnector: 0
         priority: 2
       conditionsString: CurrentQuestState("Slime") == "success"
@@ -2536,7 +2524,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 683.4883
+        x: 682.2688
         y: 691.62915
         width: 160
         height: 30
@@ -2591,8 +2579,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 582.06335
-        y: 743.00336
+        x: 572.50836
+        y: 835.77423
         width: 160
         height: 30
     - id: 20
@@ -2649,8 +2637,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 560.3816
-        y: 803.1398
+        x: 565.25964
+        y: 889.7251
         width: 160
         height: 30
     - id: 21
@@ -2705,8 +2693,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 560.3816
-        y: 853.1398
+        x: 565.25964
+        y: 939.7251
         width: 160
         height: 30
     - id: 22
@@ -2760,8 +2748,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 561.51794
-        y: 903.1398
+        x: 566.396
+        y: 989.7251
         width: 160
         height: 30
     - id: 23
@@ -2801,7 +2789,13 @@ MonoBehaviour:
       delaySimStatus: 0
       falseConditionAction: Block
       conditionPriority: 2
-      outgoingLinks: []
+      outgoingLinks:
+      - originConversationID: 3
+        originDialogueID: 23
+        destinationConversationID: 3
+        destinationDialogueID: 30
+        isConnector: 0
+        priority: 2
       conditionsString: 
       userScript: 
       onExecute:
@@ -2809,8 +2803,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 564.927
-        y: 962.2306
+        x: 569.80505
+        y: 1048.816
         width: 160
         height: 30
     - id: 24
@@ -2864,8 +2858,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 925.27136
-        y: 745.3134
+        x: 925.89417
+        y: 798.92004
         width: 160
         height: 30
     - id: 25
@@ -2911,7 +2905,7 @@ MonoBehaviour:
       - originConversationID: 3
         originDialogueID: 25
         destinationConversationID: 3
-        destinationDialogueID: 26
+        destinationDialogueID: 30
         isConnector: 0
         priority: 2
       conditionsString: 
@@ -2921,57 +2915,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 925.27136
-        y: 804.40436
-        width: 160
-        height: 30
-    - id: 26
-      fields:
-      - title: Title
-        value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: Description
-        value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: Actor
-        value: 1
-        type: 5
-        typeString: CustomFieldType_Actor
-      - title: Conversant
-        value: 3
-        type: 5
-        typeString: CustomFieldType_Actor
-      - title: Menu Text
-        value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: Dialogue Text
-        value: Oh
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: Sequence
-        value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      conversationID: 3
-      isRoot: 0
-      isGroup: 0
-      nodeColor: 
-      delaySimStatus: 0
-      falseConditionAction: Block
-      conditionPriority: 2
-      outgoingLinks: []
-      conditionsString: 
-      userScript: 
-      onExecute:
-        m_PersistentCalls:
-          m_Calls: []
-      canvasRect:
-        serializedVersion: 2
-        x: 925.27136
-        y: 854.40436
+        x: 943.9792
+        y: 933.54285
         width: 160
         height: 30
     - id: 27
@@ -3025,8 +2970,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 750.2714
-        y: 742.68176
+        x: 732.809
+        y: 979.2671
         width: 160
         height: 30
     - id: 28
@@ -3071,7 +3016,7 @@ MonoBehaviour:
       - originConversationID: 3
         originDialogueID: 28
         destinationConversationID: 3
-        destinationDialogueID: 29
+        destinationDialogueID: 30
         isConnector: 0
         priority: 2
       conditionsString: 
@@ -3081,11 +3026,11 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 750.2714
-        y: 792.68176
+        x: 789.192
+        y: 866.5011
         width: 160
         height: 30
-    - id: 29
+    - id: 30
       fields:
       - title: Title
         value: 
@@ -3108,7 +3053,80 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Oh
+        value: I have question.
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      conversationID: 3
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: 
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 3
+        originDialogueID: 30
+        destinationConversationID: 3
+        destinationDialogueID: 19
+        isConnector: 0
+        priority: 2
+      - originConversationID: 3
+        originDialogueID: 30
+        destinationConversationID: 3
+        destinationDialogueID: 27
+        isConnector: 0
+        priority: 2
+      - originConversationID: 3
+        originDialogueID: 30
+        destinationConversationID: 3
+        destinationDialogueID: 24
+        isConnector: 0
+        priority: 2
+      - originConversationID: 3
+        originDialogueID: 30
+        destinationConversationID: 3
+        destinationDialogueID: 31
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 687.5879
+        y: 744.8207
+        width: 160
+        height: 30
+    - id: 31
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 3
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: I'm done asking.
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -3130,13 +3148,13 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 744.1739
-        y: 845.1208
+        x: 913.61847
+        y: 728.33105
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 91.847565, y: 328.1555}
-    canvasZoom: 0.9099999
+    canvasScrollPosition: {x: 324.3498, y: 402.142}
+    canvasZoom: 0.55000025
   syncInfo:
     syncActors: 0
     syncItems: 0

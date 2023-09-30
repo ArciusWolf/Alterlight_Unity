@@ -17,6 +17,8 @@ public class CyrusHealth : MonoBehaviour, Damageable
     public DamageNumber dmgText;
     // Reference to the DamageNumber component - healing
     public DamageNumber healText;
+    // Reference to the DamageNumber component - mana
+    public DamageNumber manaText;
     // Reference to the DamageNumber component - alert
     public DamageNumber alertText;
 

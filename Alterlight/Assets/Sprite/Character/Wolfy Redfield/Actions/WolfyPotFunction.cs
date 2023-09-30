@@ -6,6 +6,7 @@ using UnityEngine;
 public class WolfyPotFunction : MonoBehaviour
 {
     WolfyHealth wolfyHealth;
+    WolfyAttack wolfyAttack;
     public PotCounter potCounter; // Reference to the PotCounter component
 
     // Reference to the Transform component for text position
@@ -14,12 +15,15 @@ public class WolfyPotFunction : MonoBehaviour
     public DamageNumber healText;
     // Reference to the DamageNumber component - alert
     public DamageNumber alertText;
-    // Start is called before the first frame update
+    // Reference to the DamageNumber component - mana
+    public DamageNumber manaText;
     AudioManager audioManager;
 
+    // Start is called before the first frame update
     void Start()
     {
         wolfyHealth = GetComponent<WolfyHealth>();
+        wolfyAttack = GetComponent<WolfyAttack>();
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
@@ -47,6 +51,32 @@ public class WolfyPotFunction : MonoBehaviour
             {
                 alertText.SetFollowedTarget(textPosition);
                 DamageNumber damageNumber = alertText.Spawn(wolfyHealth.GetWolfyPosition(), "Wolfy health is full!", textPosition);
+                damageNumber.SetFollowedTarget(textPosition);
+            }
+        }
+
+        // press B to use mana potion
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            if (potCounter.EnergyPotions > 0 && wolfyAttack.mana < 100)
+            {
+                wolfyAttack.mana += 20;
+                potCounter.EnergyPotions--;
+                wolfyAttack.energyBar.setEnergy(wolfyAttack.mana);
+                wolfyHealth.manaText.SetFollowedTarget(wolfyHealth.textPosition);
+                DamageNumber damageNumber = wolfyHealth.manaText.Spawn(wolfyHealth.GetWolfyPosition(), 20);
+                damageNumber.SetFollowedTarget(wolfyHealth.textPosition);
+                audioManager.PlaySFX(audioManager.Healing);
+            }
+            else if (potCounter.EnergyPotions == 0)
+            {
+                alertText.SetFollowedTarget(textPosition);
+                DamageNumber damageNumber = alertText.Spawn(wolfyHealth.GetWolfyPosition(), "No mana potion left!", textPosition);
+            }
+            else if (wolfyAttack.mana == 100)
+            {
+                alertText.SetFollowedTarget(textPosition);
+                DamageNumber damageNumber = alertText.Spawn(wolfyHealth.GetWolfyPosition(), "Wolfy mana is full!", textPosition);
                 damageNumber.SetFollowedTarget(textPosition);
             }
         }

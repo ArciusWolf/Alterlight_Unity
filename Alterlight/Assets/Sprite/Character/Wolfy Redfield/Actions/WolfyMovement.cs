@@ -14,7 +14,7 @@ public class WolfyMovement : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Collider2D physicsCollider;
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
-    bool canMove = true;
+    public bool canMove = true;
 
     // Start is called before the first frame update
     void Start()

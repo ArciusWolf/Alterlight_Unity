@@ -7,7 +7,7 @@ using TMPro;
 public class PotCounter : MonoBehaviour
 {
     public int healthPotions = 3; // Number of health potions
-    public int manaPotions = 3; // Number of mana potions
+    public int EnergyPotions = 3; // Number of mana potions
 
     public TextMeshProUGUI healthPotionText; // Reference to the TextMeshProUGUI component
     public TextMeshProUGUI manaPotionText; // Reference to the TextMeshProUGUI component
@@ -18,6 +18,6 @@ public class PotCounter : MonoBehaviour
         // put healthPotion value textmeshpro toString
         healthPotionText.text = healthPotions.ToString();
         // put manaPotion value textmeshpro toString
-        manaPotionText.text = manaPotions.ToString();
+        manaPotionText.text = EnergyPotions.ToString();
     }
 }

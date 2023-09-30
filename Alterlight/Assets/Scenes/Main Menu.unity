@@ -3875,7 +3875,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resolutionDropdown: {fileID: 1141308539}
   applyButton: {fileID: 982430}
-  SwitchManager: {fileID: 0}
+  SwitchManager: {fileID: 982429}
   AudioMixer: {fileID: 24100000, guid: c22c3dd9016e6a44ca323a2697325382, type: 2}
 --- !u!1 &588827282
 GameObject:
@@ -9848,7 +9848,7 @@ Transform:
   m_GameObject: {fileID: 1402023590}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 481.67535, y: 999.6761, z: 1.7378259}
+  m_LocalPosition: {x: 1000, y: 604, z: 1.7378259}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12346,7 +12346,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 437eabfcdf1ce8b419a7f1c8e8410ae2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9719eba2dd4cf4a4c842dadd505a6898, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
