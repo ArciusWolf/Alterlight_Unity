@@ -55,6 +55,7 @@ namespace Michsky.UI.Shift
                     resolutionSelector.CreateNewItem(options[i]);
                     // resolutionSelector.itemList[i].onValueChanged.AddListener(UpdateResolution);
 
+#pragma warning disable CS0618 // Type or member is obsolete
                     if (resolutions[i].width == Screen.currentResolution.width
                         && resolutions[i].height == Screen.currentResolution.height
                           && resolutions[i].refreshRate == Screen.currentResolution.refreshRate)
@@ -62,6 +63,7 @@ namespace Michsky.UI.Shift
                         currentResolutionIndex = i;
                         resolutionSelector.index = currentResolutionIndex;
                     }
+#pragma warning restore CS0618 // Type or member is obsolete
                 }
 
                 if (currentResolutionIndex == 0) { resolutionSelector.index = resolutionSelector.itemList.Count - 1; }

@@ -2,36 +2,33 @@ using UnityEngine;
 
 public class WolfyAttack : MonoBehaviour
 {
-    public float mana = 100f;
-
+    public float mana;
     public SwordAttack swordAttack;
-    PlayerSwitch playerSwitch;
-    AudioManager audioManager;
     public EnergyBar energyBar;
+
+    private AudioManager audioManager;
+    private PlayerSwitch playerSwitch;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        playerSwitch = GetComponent<PlayerSwitch>();
+    }
 
     private void Start()
     {
         energyBar.setMaxEnergy(mana);
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        mana = StatManager.getStatValue("Stamina");
     }
 
     private void Update()
     {
-        // Slowly regenerate energy over time and update value
-        // generate mana faster when standing still, slower when moving
-        if (GetComponent<PlayerSwitch>().WolfyActive)
+        if (playerSwitch.WolfyActive())
         {
-            if (GetComponent<WolfyMovement>().canMove)
-            {
-                mana += Time.deltaTime * 3f;
-            }
-            else
-            {
-                mana += Time.deltaTime * 10f;
-            }
+            IncreaseMana(Time.deltaTime * (playerSwitch.GetComponent<WolfyMovement>().canMove ? 3f : 10f));
             energyBar.setEnergy(mana);
         }
-        // Do not allow mana to go over 100
+
         if (mana > 100)
         {
             mana = 100;
@@ -40,13 +37,11 @@ public class WolfyAttack : MonoBehaviour
 
     public void OnFire()
     {
-        if (GetComponent<PlayerSwitch>().WolfyActive)
+        if (playerSwitch.WolfyActive() && mana > 0)
         {
             GetComponent<Animator>().SetTrigger("isAttack");
-            //play attack sound
             audioManager.PlaySFX(audioManager.Slash);
-            // Decrease mana when attacking
-            mana -= 10f;
+            DecreaseMana(10f);
             energyBar.setEnergy(mana);
         }
     }
@@ -54,8 +49,7 @@ public class WolfyAttack : MonoBehaviour
     public void SwordAttack()
     {
         GetComponent<WolfyMovement>().LockMovement();
-
-        if (GetComponent<SpriteRenderer>().flipX == true)
+        if (GetComponent<SpriteRenderer>().flipX)
         {
             swordAttack.AttackLeft();
         }
@@ -69,5 +63,15 @@ public class WolfyAttack : MonoBehaviour
     {
         GetComponent<WolfyMovement>().UnlockMovement();
         swordAttack.StopAttack();
+    }
+
+    private void IncreaseMana(float amount)
+    {
+        mana += amount;
+    }
+
+    private void DecreaseMana(float amount)
+    {
+        mana -= amount;
     }
 }

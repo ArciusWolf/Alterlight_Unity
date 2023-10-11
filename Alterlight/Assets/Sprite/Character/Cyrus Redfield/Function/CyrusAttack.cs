@@ -2,36 +2,33 @@ using UnityEngine;
 
 public class CyrusAttack : MonoBehaviour
 {
-    public float mana = 100f;
-
+    public float mana;
     public SwordAttack swordAttack;
-    PlayerSwitch playerSwitch;
-    AudioManager audioManager;
     public EnergyBar energyBar;
+
+    private AudioManager audioManager;
+    private PlayerSwitch playerSwitch;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        playerSwitch = GetComponent<PlayerSwitch>();
+    }
 
     private void Start()
     {
         energyBar.setMaxEnergy(mana);
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        mana = StatManager.getStatValue("Stamina");
     }
 
     private void Update()
     {
-        // Slowly regenerate energy over time and update value
-        // generate mana faster when standing still, slower when moving
-        if (GetComponent<PlayerSwitch>().WolfyActive)
+        if (playerSwitch.WolfyActive())
         {
-            if (GetComponent<CyrusMovement>().canMove)
-            {
-                mana += Time.deltaTime * 3f;
-            }
-            else
-            {
-                mana += Time.deltaTime * 10f;
-            }
+            IncreaseMana(Time.deltaTime * (playerSwitch.GetComponent<CyrusMovement>().canMove ? 3f : 10f));
             energyBar.setEnergy(mana);
         }
-        // Do not allow mana to go over 100
+
         if (mana > 100)
         {
             mana = 100;
@@ -40,21 +37,19 @@ public class CyrusAttack : MonoBehaviour
 
     public void OnFire()
     {
-            if (GetComponent<PlayerSwitch>().WolfyActive == false)
-            {
-                GetComponent<Animator>().SetTrigger("isAttack");
-                audioManager.PlaySFX(audioManager.Slash);
-                // Decrease mana when attacking
-                mana -= 10f;
-                energyBar.setEnergy(mana);
-            }
+        if (!playerSwitch.WolfyActive() && mana > 0)
+        {
+            GetComponent<Animator>().SetTrigger("isAttack");
+            audioManager.PlaySFX(audioManager.Slash);
+            DecreaseMana(10f);
+            energyBar.setEnergy(mana);
+        }
     }
 
     public void SwordAttack()
     {
         GetComponent<CyrusMovement>().LockMovement();
-
-        if (GetComponent<SpriteRenderer>().flipX == true)
+        if (GetComponent<SpriteRenderer>().flipX)
         {
             swordAttack.AttackLeft();
         }
@@ -68,5 +63,15 @@ public class CyrusAttack : MonoBehaviour
     {
         GetComponent<CyrusMovement>().UnlockMovement();
         swordAttack.StopAttack();
+    }
+
+    private void IncreaseMana(float amount)
+    {
+        mana += amount;
+    }
+
+    private void DecreaseMana(float amount)
+    {
+        mana -= amount;
     }
 }

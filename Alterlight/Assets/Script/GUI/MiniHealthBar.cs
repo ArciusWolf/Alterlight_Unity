@@ -37,7 +37,7 @@ public class MiniHealthBar : MonoBehaviour
         }
         else if (MiniWolfy.activeSelf)
         {
-            healthSlider.value = WolfyHealth.health;
+            healthSlider.value = WolfyHealth.wolfyHP;
             energySlider.value = WolfyAttack.mana;
         }
     }

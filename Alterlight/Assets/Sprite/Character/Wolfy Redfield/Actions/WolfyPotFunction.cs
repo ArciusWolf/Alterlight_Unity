@@ -32,11 +32,11 @@ public class WolfyPotFunction : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.H))
         {
-            if (potCounter.healthPotions > 0 && wolfyHealth.health < 100)
+            if (potCounter.healthPotions > 0 && wolfyHealth.wolfyHP < 100)
             {
-                wolfyHealth.health += 20;
+                wolfyHealth.wolfyHP += 20;
                 potCounter.healthPotions--;
-                wolfyHealth.healthBar.setHealth(wolfyHealth.health);
+                wolfyHealth.healthBar.setHealth(wolfyHealth.wolfyHP);
                 wolfyHealth.healText.SetFollowedTarget(wolfyHealth.textPosition);
                 DamageNumber damageNumber = wolfyHealth.healText.Spawn(wolfyHealth.GetWolfyPosition(), 20);
                 damageNumber.SetFollowedTarget(wolfyHealth.textPosition);
@@ -47,7 +47,7 @@ public class WolfyPotFunction : MonoBehaviour
                 alertText.SetFollowedTarget(textPosition);
                 DamageNumber damageNumber = alertText.Spawn(wolfyHealth.GetWolfyPosition(), "No health potion left!", textPosition);
             }
-            else if (wolfyHealth.health == 100)
+            else if (wolfyHealth.wolfyHP == 100)
             {
                 alertText.SetFollowedTarget(textPosition);
                 DamageNumber damageNumber = alertText.Spawn(wolfyHealth.GetWolfyPosition(), "Wolfy health is full!", textPosition);
@@ -82,9 +82,9 @@ public class WolfyPotFunction : MonoBehaviour
         }
 
         // if overhealing, set health to 100
-        if (wolfyHealth.health > 100)
+        if (wolfyHealth.wolfyHP > 100)
         {
-            wolfyHealth.health = 100;
+            wolfyHealth.wolfyHP = 100;
         }
     }
 }

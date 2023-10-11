@@ -22,7 +22,7 @@ public class CharacterFollow : MonoBehaviour
     {
         GameObject target; // The character to follow
 
-        if (playerSwitch.WolfyActive)
+        if (playerSwitch.WolfyActive())
         {
             target = playerSwitch.WolfyController.gameObject;
         }

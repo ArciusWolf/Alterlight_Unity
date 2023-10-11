@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using Cinemachine;
+using UnityEngine;
 
 public class PlayerSwitch : MonoBehaviour
 {
@@ -16,56 +13,79 @@ public class PlayerSwitch : MonoBehaviour
 
     public GameObject MiniWolfy;
     public GameObject MiniCyrus;
-    Animator anim;
-    public bool WolfyActive;
 
-    // Start is called before the first frame update
-    void Start()
+    Animator anim;
+
+    private bool _isWolfyActive;
+
+    private void Start()
     {
         anim = GetComponent<Animator>();
-        cam.Follow = WolfyController.transform;
-        cam.LookAt = WolfyController.transform;
-        WolfyActive = true;
-        // disable gameObject PlayerCyrus
-        PlayerCyrus.SetActive(false);
-        PlayerWolfy.SetActive(true);
+        SwitchToWolfy();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
             Switch();
         }
-
     }
+
+    public bool WolfyActive()
+    {
+        return _isWolfyActive;
+    }
+
 
     private void Switch()
     {
-        if (WolfyActive)
+        if (_isWolfyActive)
         {
-            cam.Follow = CyrusController.transform;
-            cam.LookAt = CyrusController.transform;
-            WolfyController.enabled = false;
-            CyrusController.enabled = true;
-            WolfyActive = false;
-            PlayerCyrus.SetActive(true);
-            PlayerWolfy.SetActive(false);
-            MiniCyrus.SetActive(false);
-            MiniWolfy.SetActive(true);
+            SwitchToCyrus();
         }
-        else if (WolfyActive == false)
+        else
         {
-            cam.Follow = WolfyController.transform;
-            cam.LookAt = WolfyController.transform;
-            WolfyController.enabled = true;
-            CyrusController.enabled = false;
-            WolfyActive = true;
-            PlayerCyrus.SetActive(false);
-            PlayerWolfy.SetActive(true);
-            MiniCyrus.SetActive(true);
-            MiniWolfy.SetActive(false);
+            SwitchToWolfy();
         }
+    }
+
+    private void SwitchToWolfy()
+    {
+        SetActiveCharacter(WolfyController, PlayerWolfy, MiniCyrus, "Wolfy");
+        _isWolfyActive = true;
+    }
+
+    private void SwitchToCyrus()
+    {
+        SetActiveCharacter(CyrusController, PlayerCyrus, MiniWolfy, "Cyrus");
+        _isWolfyActive = false;
+    }
+
+    private void SetActiveCharacter(MonoBehaviour activeController, GameObject activePlayer, GameObject activeMini, string characterName)
+    {
+        cam.Follow = activeController.transform;
+        cam.LookAt = activeController.transform;
+
+        WolfyController.enabled = false;
+        CyrusController.enabled = false;
+
+        activeController.enabled = true;
+
+        PlayerCyrus.SetActive(false);
+        PlayerWolfy.SetActive(false);
+
+        activePlayer.SetActive(true);
+
+        MiniCyrus.SetActive(false);
+        MiniWolfy.SetActive(false);
+
+        activeMini.SetActive(true);
+
+        StatManager.activeCharacter = characterName;
+
+        Debug.Log($"Switched to {characterName}");
+        Debug.Log($"{characterName}Controller.enabled: {activeController.enabled}");
+        Debug.Log($"StatManager.activeCharacter: {StatManager.activeCharacter}");
     }
 }

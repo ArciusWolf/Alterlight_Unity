@@ -2,12 +2,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DamageNumbersPro;
+using Unity.VisualScripting;
 
 public class WolfyHealth : MonoBehaviour, Damageable
 {
     public HealthBar healthBar; // Reference to the HealthBar component
-    public float health = 100f; // Initial health value
-    public float currentHP; // Current health value
+    //public float health = 100f; // Initial health value
+    //public float currentHP; // Current health value
+
+    public float wolfyHP;
 
     Animator anim;
 
@@ -27,14 +30,19 @@ public class WolfyHealth : MonoBehaviour, Damageable
 
     bool _targetable = true; // Flag to determine if the object is targetable
 
+    void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        anim = GetComponent<Animator>();
+        textPosition = GetComponent<Transform>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        wolfyHP = StatManager.getStatValue("Health");
         // Set the maximum health value for the health bar
-        healthBar.setMaxHealth(health);
-        anim = GetComponent<Animator>();
-        textPosition = GetComponent<Transform>();
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        healthBar.setMaxHealth(StatManager.getStatValue("Health"));
     }
 
     // limit health value to 100 only
@@ -51,14 +59,14 @@ public class WolfyHealth : MonoBehaviour, Damageable
     {
         set
         {
-            if (value < health)
+            if (value < wolfyHP)
             {
                 anim.SetTrigger("isHit"); // Trigger the "isHit" animation if the health value is decreased
                 audioManager.PlaySFX(audioManager.PlayerHit);
             }
-            health = value; // Update the health value
+            wolfyHP = value; // Update the health value
 
-            if (health <= 0)
+            if (wolfyHP <= 0)
             {
                 Dead(); // Call the Dead method if the health reaches or goes below 0
                 Targetable = false; // Set the targetable flag to false
@@ -66,7 +74,7 @@ public class WolfyHealth : MonoBehaviour, Damageable
         }
         get
         {
-            return health; // Return the current health value
+            return wolfyHP; // Return the current health value
         }
     }
 
@@ -93,7 +101,7 @@ public class WolfyHealth : MonoBehaviour, Damageable
         // Spawn a damage number at the object's position
         DamageNumber damageNumber = dmgText.Spawn(GetWolfyPosition(), damage);
         // Update the health bar with the new health value
-        healthBar.setHealth(health);
+        healthBar.setHealth(wolfyHP);
     }
 
     public void OnHit(float damage, Vector2 knockback)

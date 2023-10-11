@@ -50,7 +50,6 @@ public class SwordAttack : MonoBehaviour
                 Vector2 direction = (obj.transform.position - parentPosition).normalized;
                 Vector2 knockback = direction * knockbackForce;
 
-                /*            obj.SendMessage("OnHit", damage, knockback);*/
                 damageable.OnHit(damage, knockback);
             }
             else
