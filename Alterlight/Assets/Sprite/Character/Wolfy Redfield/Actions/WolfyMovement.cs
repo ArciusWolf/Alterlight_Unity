@@ -8,7 +8,7 @@ public class WolfyMovement : MonoBehaviour
     public float collisionOffset = 0.1f;
     public ContactFilter2D movementFilter;
 
-    Vector2 movementInput;
+    public Vector2 movementInput;
     Rigidbody2D rb;
     Animator anim;
     SpriteRenderer spriteRenderer;

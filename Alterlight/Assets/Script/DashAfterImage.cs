@@ -30,13 +30,14 @@ public class DashAfterImage : MonoBehaviour
         sr.sprite = playerSR.sprite;
         transform.position = Wolfy.position;
         transform.rotation = Wolfy.rotation;
+        transform.localScale = new Vector3(0.4f, 0.4f, 0.4f); // Set the scale to 0.4
         timeActivated = Time.time;
     }
 
     private void Update()
     {
         alpha *= alphaMultiplier;
-        color = new Color(1f, 1f, 1f, alpha);
+        color = new Color(1f, 0f, 0f, alpha);
         sr.color = color;
 
         if (Time.time >= (timeActivated + activeTime))
