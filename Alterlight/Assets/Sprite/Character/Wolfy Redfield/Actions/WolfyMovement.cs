@@ -4,64 +4,84 @@ using UnityEngine.InputSystem;
 
 public class WolfyMovement : MonoBehaviour
 {
-    float speed;
-    [SerializeField] private float collisionOffset = 0.1f;
-    [SerializeField] private ContactFilter2D movementFilter;
+    public float speed = 1f;
+    public float collisionOffset = 0.1f;
+    public ContactFilter2D movementFilter;
 
-    private Vector2 movementInput;
-    private Rigidbody2D rb;
-    private Animator anim;
-    private SpriteRenderer spriteRenderer;
-    private Collider2D physicsCollider;
-    private List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
+    Vector2 movementInput;
+    Rigidbody2D rb;
+    Animator anim;
+    SpriteRenderer spriteRenderer;
+    Collider2D physicsCollider;
+    List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
     public bool canMove = true;
 
-    private void Start()
+    // Start is called before the first frame update
+    void Start()
     {
-        speed = StatManager.getStatValue("Speed");
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         physicsCollider = GetComponent<Collider2D>();
     }
 
-    private void FixedUpdate()
+    // FixedUpdate is called at a fixed rate
+    void FixedUpdate()
     {
         if (canMove)
         {
-            HandleMovement();
-            HandleAnimations();
+            if (movementInput != Vector2.zero)
+            {
+                bool success = TryMove(movementInput);
+                if (!success)
+                {
+                    success = TryMove(new Vector2(movementInput.x, 0f));
+                }
+                if (!success)
+                {
+                    success = TryMove(new Vector2(0f, movementInput.y));
+                }
+                // Player Animation when moving
+                anim.SetBool("isMove", true);
+            }
+            else
+            {
+                anim.SetBool("isMove", false);
+            }
+            // Flip Character when x < 0 or x > 0
+            if (movementInput.x < 0)
+            {
+                spriteRenderer.flipX = true;
+            }
+            else if (movementInput.x > 0)
+            {
+                spriteRenderer.flipX = false;
+            }
+            if (movementInput.y > 0)
+            {
+                anim.SetBool("isWalkUp", true);
+            }
+            else
+            {
+                anim.SetBool("isWalkUp", false);
+            }
+            // play walk down animation
+            if (movementInput.y < 0)
+            {
+                anim.SetBool("isWalkDown", true);
+            }
+            else
+            {
+                anim.SetBool("isWalkDown", false);
+            }
         }
     }
 
-    private void HandleMovement()
-    {
-        if (movementInput != Vector2.zero)
-        {
-            bool success = TryMove(movementInput);
-            if (!success)
-            {
-                success = TryMove(new Vector2(movementInput.x, 0f));
-            }
-            if (!success)
-            {
-                success = TryMove(new Vector2(0f, movementInput.y));
-            }
-        }
-    }
-
-    private void HandleAnimations()
-    {
-        anim.SetBool("isMove", movementInput != Vector2.zero);
-        spriteRenderer.flipX = movementInput.x < 0;
-        //anim.SetBool("isWalkUp", movementInput.y > 0);
-        //anim.SetBool("isWalkDown", movementInput.y < 0);
-    }
 
     private bool TryMove(Vector2 direction)
     {
-        int count = rb.Cast(direction, movementFilter, castCollisions, speed * Time.fixedDeltaTime + collisionOffset);
-        if (count == 0)
+        int Count = rb.Cast(direction, movementFilter, castCollisions, speed * Time.fixedDeltaTime + collisionOffset);
+        if (Count == 0)
         {
             Vector2 newPosition = Vector2.Lerp(rb.position, rb.position + direction * speed * Time.fixedDeltaTime, 0.5f);
             rb.MovePosition(newPosition);
@@ -73,7 +93,8 @@ public class WolfyMovement : MonoBehaviour
         }
     }
 
-    private void OnMove(InputValue movementValue)
+
+    void OnMove(InputValue movementValue)
     {
         movementInput = movementValue.Get<Vector2>();
     }
@@ -88,6 +109,7 @@ public class WolfyMovement : MonoBehaviour
         canMove = true;
     }
 
+    // get movementInput then return
     public Vector2 GetMovementInput()
     {
         return movementInput;
